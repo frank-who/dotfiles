@@ -1,0 +1,46 @@
+#!/bin/sh
+
+info() {
+  echo "  [ \033[00;34m..\033[0m ] $1"
+}
+
+user() {
+  printf "\r         $1 "
+}
+
+success() {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail() {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo
+  exit
+}
+
+configure_git() {
+  info 'gitconfig'
+
+  user '- Git User Name?'
+  read -e git_user_name
+  user '- Git User Email?'
+  read -e git_user_email
+
+  sed -e "s/GITUSERNAME/$git_user_name/g" -e "s/GITUSEREMAIL/$git_user_email/g" git/gitconfig.example > git/gitconfig.symlink
+
+  success 'gitconfig'
+}
+
+install_dotfiles() {
+  info 'Pending (dotfiles)'
+}
+
+set -e
+echo
+
+configure_git
+install_dotfiles
+
+echo
+echo '  Awwwww Yeaahh!'
+echo

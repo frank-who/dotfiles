@@ -1,0 +1,42 @@
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# vim
+.*.sw[a-z]
+
+# SublimeText
+*.sublime-workspace
+*.sublime-project
+sftp-config.json
+
+# Rails
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+database.yml
+
+# Misc
+.svn
+*~
+.loadpath
+.project
+
