@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DOTFILES_PATH=`pwd`
+
 info() {
   echo "  [ \033[00;34m..\033[0m ] $1"
 }
@@ -26,7 +28,10 @@ configure_git() {
   user '- Git User Email?'
   read -e git_user_email
 
-  sed -e "s/GITUSERNAME/$git_user_name/g" -e "s/GITUSEREMAIL/$git_user_email/g" git/gitconfig.example > git/gitconfig.symlink
+  sed -e "s/GITUSERNAME/$git_user_name/g" \
+  -e "s/GITUSEREMAIL/$git_user_email/g" \
+  -e "s,DOTFILESPATH,$DOTFILES_PATH,g" \
+  git/gitconfig.example > git/gitconfig.symlink
 
   success 'gitconfig'
 }

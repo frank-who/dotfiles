@@ -4,7 +4,7 @@
 
 [core]
   autocrlf     = false
-  excludesfile = ~/.dotfiles/gitignore
+  excludesfile = DOTFILESPATH/gitignore
   quotepath    = false
   whitespace   = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
