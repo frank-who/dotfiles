@@ -21,7 +21,7 @@ fail() {
 }
 
 configure_git() {
-  info 'gitconfig'
+  info 'Configure Git'
 
   user '- Git User Name?'
   read -e git_user_name
@@ -33,21 +33,27 @@ configure_git() {
   -e "s,DOTFILESPATH,$DOTFILES_PATH,g" \
   git/gitconfig.example > git/gitconfig.symlink
 
-  success 'gitconfig'
+  success 'Complete! - Configure Git'
 }
 
 run_installers() {
-  info 'Run Installer'
+  info 'Installers'
+
   for source in `find $DOTFILES_PATH -maxdepth 2 -name \*.installer`; do
     info "${source%.*}"
   done
-  success 'Installer Complete!'
+
+  success 'Complete! - Installers'
 }
 
 install_dotfiles() {
+  info 'Install Dotfiles'
+
   for source in `find $DOTFILES_PATH -maxdepth 2 -name \*.symlink`; do
     info "${source%.*}"
   done
+
+  success 'Complete! - Install Dotfiles'
 }
 
 set -e
