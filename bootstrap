@@ -37,7 +37,9 @@ configure_git() {
 }
 
 install_dotfiles() {
-  info 'Pending (dotfiles)'
+  for source in `find $DOTFILES_PATH -maxdepth 2 -name \*.symlink`; do
+    info "${source%.*}"
+  done
 }
 
 set -e
