@@ -60,7 +60,6 @@ set -e
 echo
 
 configure_git
-run_installers
 install_dotfiles
 
 echo
