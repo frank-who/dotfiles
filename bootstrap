@@ -40,7 +40,7 @@ run_installers() {
   info 'Installers'
 
   for source in `find $DOTFILES_PATH -maxdepth 2 -name \*.installer`; do
-    info "${source%.*}"
+    source $source
   done
 
   success 'Complete! - Installers'
