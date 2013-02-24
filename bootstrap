@@ -33,7 +33,7 @@ configure_git() {
   -e "s,DOTFILESPATH,$DOTFILES_PATH,g" \
   git/gitconfig.example > git/gitconfig.symlink
 
-  success 'Complete! - Configure Git'
+  success 'Configure Git'
 }
 
 run_installers() {
@@ -43,7 +43,7 @@ run_installers() {
     source $source
   done
 
-  success 'Complete! - Installers'
+  success 'Installers'
 }
 
 install_dotfiles() {
@@ -53,7 +53,7 @@ install_dotfiles() {
     info "${source%.*}"
   done
 
-  success 'Complete! - Install Dotfiles'
+  success 'Install Dotfiles'
 }
 
 set -e
