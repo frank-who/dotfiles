@@ -11,6 +11,10 @@ export CLICOLOR=true
 fpath=($ZSH/zsh/functions $fpath)
 autoload -U $ZSH/zsh/functions/*(:t)
 
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
 setopt NO_LIST_BEEP
@@ -20,13 +24,21 @@ setopt HIST_VERIFY
 setopt SHARE_HISTORY # share history between sessions ???
 setopt EXTENDED_HISTORY # add timestamps to history
 setopt PROMPT_SUBST
-setopt NO_CORRECT
+unsetopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
 
-bindkey '^[[H' beginning-of-line
-bindkey '^[[1~' beginning-of-line
-bindkey '^[OH' beginning-of-line
-bindkey '^[[F'  end-of-line
-bindkey '^[[4~' end-of-line
-bindkey '^[OF' end-of-line
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# bindkey '^[[H' beginning-of-line
+# bindkey '^[[1~' beginning-of-line
+# bindkey '^[OH' beginning-of-line
+# bindkey '^[[F'  end-of-line
+# bindkey '^[[4~' end-of-line
+# bindkey '^[OF' end-of-line
+
+bindkey '^E' end-of-line
+bindkey '^A' beginning-of-line
