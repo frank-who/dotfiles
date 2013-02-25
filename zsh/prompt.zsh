@@ -5,19 +5,16 @@ else
 fi
 
 git_branch() {
- QUERY=$($git symbolic-ref HEAD 2> /dev/null) || return
- echo "${QUERY#refs/heads/}"
-}
-
-git_dirty() {
-  QUERY=$(git status 2> /dev/null | tail -n 1)
-  if [[ $QUERY == '' ]]; then
+  BQUERY=$($git symbolic-ref HEAD 2> /dev/null) || return
+  SQUERY=$(git status 2> /dev/null | tail -n 1)
+  BRANCH="${QUERY#refs/heads/}"
+  if [[ $SQUERY == '' ]]; then
     echo
   else
-    if [[ $QUERY =~ ^nothing ]]; then
-      echo "on %{$fg_bold[green]%}$(git_branch)%{$reset_color%}" # Clean
+    if [[ $SQUERY =~ ^nothing ]]; then
+      echo "on %{$fg_bold[green]%}${BRANCH}%{$reset_color%}" # Clean
     else
-      echo "on %{$fg_bold[red]%}$(git_branch)%{$reset_color%}" # Eeeew
+      echo "on %{$fg_bold[red]%}${BRANCH}%{$reset_color%}" # Eeeew
     fi
   fi
 }
@@ -65,7 +62,7 @@ host_name() {
  echo "%{$fg_bold[yellow]%}%m%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(directory_name) $(git_dirty)$(git_status)$(need_push)\n$ '
+export PROMPT=$'\n$(directory_name) $(git_branch)$(git_status)$(need_push)\n$ '
 export RPROMPT=$'$(ruby_version)'
 
 precmd() {
