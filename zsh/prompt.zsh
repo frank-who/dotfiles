@@ -61,6 +61,10 @@ user_name() {
   echo "%{$fg_bold[yellow]%}%n%{$reset_color%}"
 }
 
+host_name() {
+ echo "%{$fg_bold[yellow]%}%m%{$reset_color%}"
+}
+
 export PROMPT=$'\n$(directory_name) $(git_dirty)$(git_status)$(need_push)\n$ '
 export RPROMPT=$'$(ruby_version)'
 
