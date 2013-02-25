@@ -32,13 +32,3 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
-
-# bindkey '^[[H' beginning-of-line
-# bindkey '^[[1~' beginning-of-line
-# bindkey '^[OH' beginning-of-line
-# bindkey '^[[F'  end-of-line
-# bindkey '^[[4~' end-of-line
-# bindkey '^[OF' end-of-line
-
-bindkey '^E' end-of-line
-bindkey '^A' beginning-of-line
