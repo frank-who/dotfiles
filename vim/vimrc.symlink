@@ -1,0 +1,131 @@
+""
+"" Basic
+""
+
+set encoding=utf-8    " utf-8
+set history=20        " Command line history items
+set modelines=0       " Prevent security exploits with modelines
+set nocompatible      " No need vim to be vi compatible
+set t_Co=256          " Set colours to 256
+set undolevels=1000   " Set number of changes that can be undone
+set visualbell        " Stfu son
+let mapleader=","     " Change leader from \ to ,
+syntax on             " Syntax highlighting
+set background=dark
+""color solarized
+
+""
+"" UI
+""
+
+set nocursorline    " Highlight current line
+set nonumber        " Show line numbers
+set numberwidth=5   " For files with a 1000+ lines
+set ruler           " Show cursor position all the time
+set title           " Change the terminal's title
+
+""
+"" Status Bar
+""
+
+set cmdheight=2   " Increase height of command-line
+set laststatus=2  " Always show status line
+set noshowcmd     " Don't show incomplete commands
+set showmode      " Show current mode
+
+
+
+""
+"" Editing
+""
+
+set autoindent          " Auto indent new lines
+set formatoptions+=n    " Support for numbered/bullet lists
+set lazyredraw          " Don't redraw while running macros
+set matchtime=3         " Show matches duration (1/10sec)
+set noequalalways       " Without setting this, ZoomWin restores windows in a way that causes
+                        "   equalalways behavior to be triggered the next time CommandT is used.
+set nosmarttab          " <Tab> always inserts blanks
+set showmatch           " Flashes matching brackets/braces
+set smartindent         " Smart auto indenting
+set virtualedit=block   " Virtual edit in visual block
+
+" Folding settings
+set foldcolumn=1        " Show open / closed folds information
+set foldenable          " Enable folding
+set foldlevelstart=99   " All folds are open
+set foldmethod=syntax   " Fold based on syntax
+
+""
+"" Whitespace
+""
+
+set backspace=2                       " Backspace through everything. 2=indent,eol,start
+set expandtab                         " Use spaces, not tabs
+set list listchars=tab:\ \ ,trail:·   " Make trailing whitespace visible
+set nowrap                            " Don't wrap lines
+set shiftwidth=2                      " Number of spaces for autoindent
+set softtabstop=2                     " Number of spaces that a tab counts
+set tabstop=2                         " Every 2 columns
+let macvim_hig_shift_movement=1       " mvim shift-arrow-keys (required in vimrc)
+
+""
+"" Searching
+""
+
+set gdefault    " /g flag is on by default on substitutions
+set hlsearch    " Highlight search results
+set ignorecase  " Ignore CaSe when SeArching
+set incsearch   " Jump to search word as you type
+set smartcase   " Override ignorecase if search contains uppercase
+
+""
+"" Disbale Backup / Swap Files
+""
+
+set nobackup
+set noswapfile
+set nowritebackup
+
+""
+"" File Types
+""
+
+" Turn on filetype plugins
+filetype plugin indent on
+
+" Set some filetypes
+au BufRead,BufNewFile {config.ru,Gemfile,Rakefile,*.rake} setf ruby
+au BufRead,BufNewFile *.json setf javascript
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} setf markdown
+
+""
+"" Mappings
+""
+
+" Make ; do the same as :
+nnoremap ; :
+
+" Clear search and remove highlighting
+noremap <Leader><Space> :noh<CR>
+
+" Strip whitespace with ,W
+nnoremap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+
+" Add a blank line in Normal mode
+noremap <Leader><CR> :put_<CR>
+
+" Reselect pasted text
+nnoremap <Leader>v V`]
+
+" <Tab> to indent code (Normal / Visual mode)
+nmap <Tab> I<Tab><Esc>
+nmap <S-Tab> ^I<BS><Esc>
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+" Open edit command with path of current file filled in (Normal mode)
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Open a tab edit command with path of current file filled in (Normal mode)
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
