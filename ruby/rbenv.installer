@@ -1,0 +1,7 @@
+info '  rbenv'
+#git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+success '  rbenv'
+
+info '  ruby-build'
+#git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+success '  ruby-build'

@@ -5,9 +5,9 @@ else
 fi
 
 git_branch() {
-  BQUERY=$($git symbolic-ref HEAD 2> /dev/null) || return
+  RQUERY=$($git symbolic-ref HEAD 2> /dev/null) || return
   SQUERY=$(git status 2> /dev/null | tail -n 1)
-  BRANCH="${QUERY#refs/heads/}"
+  BRANCH="${RQUERY#refs/heads/}"
   if [[ $SQUERY == '' ]]; then
     echo
   else
