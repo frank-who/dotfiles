@@ -28,12 +28,10 @@ set title           " Change the terminal's title
 "" Status Bar
 ""
 
-set cmdheight=2   " Increase height of command-line
+set cmdheight=1   " Increase height of command-line
 set laststatus=2  " Always show status line
 set noshowcmd     " Don't show incomplete commands
 set showmode      " Show current mode
-
-
 
 ""
 "" Editing
