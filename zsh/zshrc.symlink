@@ -21,4 +21,3 @@ autoload -U compinit
 compinit -i
 
 unset config_files
-
