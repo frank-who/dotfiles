@@ -12,9 +12,9 @@ git_branch() {
     echo
   else
     if [[ $SQUERY =~ ^nothing ]]; then
-      echo " on %{$fg_bold[green]%}${BRANCH}%{$reset_color%}" # Clean
+      echo " %{$fg_bold[green]%}${BRANCH}%{$reset_color%}" # Clean
     else
-      echo " on %{$fg_bold[red]%}${BRANCH}%{$reset_color%}" # Eeeew
+      echo " %{$fg_bold[red]%}${BRANCH}%{$reset_color%}" # Eeeew
     fi
   fi
 }
@@ -41,7 +41,7 @@ git_need_push() {
 
 ruby_version() {
   if (( $+commands[rbenv] )); then
-    echo "%{$fg[yellow]%}‹$(rbenv version | awk '{print $1}')›%{$reset_color%} "
+    echo " %{$fg[yellow]%}‹$(rbenv version | awk '{print $1}')›%{$reset_color%}"
   else
     echo ''
   fi
@@ -59,7 +59,7 @@ host_name() {
  echo "%{$fg_bold[yellow]%}%m%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(directory_name)$(git_branch)$(git_status)$(git_need_push)$(ruby_version)\n$ '
+export PROMPT=$'\n╭─ $(directory_name)$(ruby_version)$(git_branch)$(git_status)$(git_need_push)\n╰─$ '
 #export RPROMPT='$(ruby_version)'
 
 precmd() {
