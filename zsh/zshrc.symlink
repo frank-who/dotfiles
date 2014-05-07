@@ -22,3 +22,5 @@ autoload -U compinit
 compinit -i
 
 unset config_files
+
+alias boot-base45='cd ~/Code/P45/base45/spec/dummy; rails s -p 3045'

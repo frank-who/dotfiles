@@ -1,0 +1,5 @@
+# Usage: jsoncurl http://example.com/rows.json
+
+function jsoncurl() {
+  curl "$@" | python -mjson.tool
+}

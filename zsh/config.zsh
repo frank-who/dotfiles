@@ -1,34 +1,38 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
+# Default prompt
+PS1='%n@%m:%~%# '
 
+# ls colors
 autoload colors && colors
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 
 fpath=($ZSH/zsh/functions $fpath)
 autoload -U $ZSH/zsh/functions/*(:t)
 
+# Directories
+setopt auto_name_dirs
+setopt auto_pushd
+setopt pushd_ignore_dups
+
+# Color grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+
+# History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt NO_BG_NICE # don't nice background tasks
-setopt NO_HUP
-setopt NO_LIST_BEEP
-setopt LOCAL_OPTIONS # allow functions to have local options
-setopt LOCAL_TRAPS # allow functions to have local traps
-setopt HIST_VERIFY
-unsetopt SHARE_HISTORY # share history between sessions ???
-setopt EXTENDED_HISTORY # add timestamps to history
-setopt PROMPT_SUBST
-unsetopt CORRECT
-setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+setopt prompt_subst
 
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY SHARE_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
+# Misc
+export LC_CTYPE=$LANG

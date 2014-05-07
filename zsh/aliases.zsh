@@ -34,6 +34,11 @@ alias gsm='git submodule'
 alias gsma='git submodule add'
 alias gsmi='git submodule init'
 alias gsmu='git submodule update'
+alias gsh='git stash'
+alias gsp='git stash pop'
+alias gu='git update-index --assume-unchanged'
+alias gnou='git update-index --no-assume-unchanged'
+alias gulist="git ls-files -v|grep '^h'"
 
 # Ruby / Rails
 alias be='bundle exec'
@@ -58,7 +63,11 @@ alias nginxs='nginx -s stop'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias powrst='touch ~/.pow/restart.txt'
+alias pow-install='curl get.pow.cx | sh'
+alias pow-remove='curl get.pow.cx/uninstall.sh | sh'
 alias tlf='tail -f'
+alias tlfd='tail -f log/development'
+alias redisstart='redis-server /usr/local/etc/redis.conf'
 
 # Make sudo understand aliases
 alias sudo='sudo '
