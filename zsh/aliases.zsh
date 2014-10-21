@@ -68,6 +68,7 @@ alias pow-remove='curl get.pow.cx/uninstall.sh | sh'
 alias tlf='tail -f'
 alias tlfd='tail -f log/development'
 alias redisstart='redis-server /usr/local/etc/redis.conf'
+alias annotate='bundle exec annotate --exclude tests,fixtures,factories --position after'
 
 # Make sudo understand aliases
 alias sudo='sudo '
