@@ -32,7 +32,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-database.yml
 
 # Misc
 .svn
