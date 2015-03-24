@@ -22,33 +22,36 @@ alias reload!='. ~/.zshrc'
 # Git
 alias gs='git st'
 alias gpl='git pull'
-alias gplr='git pull --rebase'
 alias gps='git push'
 alias gd='git df'
-alias gc='git commit'
-alias gca='git commit -a'
 alias gco='git checkout'
 alias gb='git branch'
-alias gbr='git branch -r'
-alias gsm='git submodule'
-alias gsma='git submodule add'
-alias gsmi='git submodule init'
-alias gsmu='git submodule update'
-alias gsh='git stash'
 alias gsp='git stash pop'
 alias gu='git update-index --assume-unchanged'
 alias gnou='git update-index --no-assume-unchanged'
 alias gulist="git ls-files -v|grep '^h'"
+alias gc='git commit'
+alias gca='git commit -a'
+alias gcm='git commit -m'
+gcma()  { git commit -m ":star2: $*"; }        # add
+gcmr()  { git commit -m ":scissors: $*"; }     # remove
+gcmc()  { git commit -m ":hammer: $*"; }       # chore
+gcmf()  { git commit -m ":wrench: $*"; }       # fix
+gcmhf() { git commit -m ":fire: $*"; }         # hotfix
+gcmrl() { git commit -m ":rocket: $*"; }       # release
+gcmrf() { git commit -m ":nut_and_bolt: $*"; } # refactor
+gcmw()  { git commit -m ":hourglass: $*"; }    # wip
 
 # Ruby / Rails
 alias be='bundle exec'
 alias migrate='rake db:migrate db:test:clone'
 alias rake='noglob rake'
 alias rc='rails c'
-alias rdl='tail -f log/development.log'
 alias rg='rails g'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
+alias rs='bundle exec rails s -b 0.0.0.0'
+alias annotate='bundle exec annotate --exclude tests,fixtures,factories --position after'
 
 # OSX
 alias flushdnscache='dscacheutil -flushcache'
@@ -57,7 +60,6 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # Misc
 alias e='subl -n .'
-alias mvi='mvim'
 alias nginxr='nginx -s reload'
 alias nginxs='nginx -s stop'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -66,9 +68,8 @@ alias powrst='touch ~/.pow/restart.txt'
 alias pow-install='curl get.pow.cx | sh'
 alias pow-remove='curl get.pow.cx/uninstall.sh | sh'
 alias tlf='tail -f'
-alias tlfd='tail -f log/development'
+alias tlfd='tail -f log/development.log'
 alias redisstart='redis-server /usr/local/etc/redis.conf'
-alias annotate='bundle exec annotate --exclude tests,fixtures,factories --position after'
 
 # Make sudo understand aliases
 alias sudo='sudo '
