@@ -1,0 +1,5 @@
+function gh {
+  repo=`git remote -v | head -1 | sed "s/git@github.com://" | cut -c8-999 | sed "s/\.git .*//"`
+  echo Opening Github for $repo
+  open "https://github.com/$repo"
+}

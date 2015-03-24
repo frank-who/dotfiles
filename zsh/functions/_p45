@@ -1,2 +1,2 @@
-#compdef platform45
+#compdef p45
 _files -W $CODE/platform45 -/
