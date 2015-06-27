@@ -33,14 +33,14 @@ alias gulist="git ls-files -v|grep '^h'"
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit -m'
-gcma()  { git commit -m ":star2: $*"; }        # add
-gcmr()  { git commit -m ":scissors: $*"; }     # remove
-gcmc()  { git commit -m ":hammer: $*"; }       # chore
-gcmf()  { git commit -m ":wrench: $*"; }       # fix
-gcmhf() { git commit -m ":fire: $*"; }         # hotfix
-gcmrl() { git commit -m ":rocket: $*"; }       # release
-gcmrf() { git commit -m ":nut_and_bolt: $*"; } # refactor
-gcmw()  { git commit -m ":hourglass: $*"; }    # wip
+gcma()  { git commit -m "add: $*"; }      # add
+gcmr()  { git commit -m "remove: $*"; }   # remove
+gcmc()  { git commit -m "chore: $*"; }    # chore
+gcmf()  { git commit -m "fix: $*"; }      # fix
+gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
+gcmrl() { git commit -m "release: $*"; }  # release
+gcmrf() { git commit -m "refactor: $*"; } # refactor
+gcmw()  { git commit -m "wip: $*"; }      # wip
 
 # Ruby / Rails
 alias be='bundle exec'
@@ -59,7 +59,7 @@ alias rmdsstores='sudo find ~/ -name .DS_Store -exec rm {} \;'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # Misc
-alias e='subl -n .'
+alias e='atom .'
 alias nginxr='nginx -s reload'
 alias nginxs='nginx -s stop'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -70,6 +70,7 @@ alias pow-remove='curl get.pow.cx/uninstall.sh | sh'
 alias tlf='tail -f'
 alias tlfd='tail -f log/development.log'
 alias redisstart='redis-server /usr/local/etc/redis.conf'
+alias sidekiqstart='bundle exec sidekiq -C config/sidekiq.yml'
 
 # Make sudo understand aliases
 alias sudo='sudo '
