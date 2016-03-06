@@ -27,3 +27,5 @@ alias boot-base45='cd ~/Code/P45/base45/spec/dummy; rails s -p 3045'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
