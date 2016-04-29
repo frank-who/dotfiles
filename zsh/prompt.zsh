@@ -1,22 +1,15 @@
-# agnoster's Theme - https://gist.github.com/3712874
-# A Powerline-inspired theme for ZSH
-
-### Segment drawing
-# A few utility functions to make it easy and re-usable to draw segmented prompts
+# http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
 CURRENT_BG='NONE'
 
 # Special Powerline characters
 
 () {
-  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-
-  SEGMENT_SEPARATOR=$'\ue0b0'
+  local LC_ALL='' LC_CTYPE='en_US.UTF-8'
+  SEGMENT_SEPARATOR=$'\uE0B0'
 }
 
-# Begin a segment
-# Takes two arguments, background and foreground. Both can be omitted,
-# rendering default background/foreground.
+## Begin segment
 prompt_segment() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
@@ -30,7 +23,7 @@ prompt_segment() {
   [[ -n $3 ]] && echo -n $3
 }
 
-# End the prompt, closing any open segments
+## End segment
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
@@ -41,8 +34,6 @@ prompt_end() {
   CURRENT_BG=''
 }
 
-### Prompt components
-# Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
@@ -51,29 +42,56 @@ prompt_context() {
   fi
 }
 
+
+## Directory
+prompt_dir() {
+  local prompt_text
+  
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    prompt_text="\uF418 ${PWD/#$HOME/~}"
+  else
+    prompt_text="\uF413 ${PWD/#$HOME/~}"
+  fi
+  
+  prompt_segment 240 blue $prompt_text
+}
+
+
+## Ruby
+prompt_ruby() {
+  local prompt_text
+  
+  if (( $+commands[rbenv] )); then
+    current_ruby() {
+      echo "$(rbenv gemset active 2&>/dev/null | sed -e 's/ global$//')"
+    }
+    
+    if [[ -n $(current_ruby) ]]; then
+      prompt_text="$(rbenv version | sed -e 's/ (set.*$//')"@"$(current_ruby)"
+    else
+      prompt_text="$(rbenv version | sed -e 's/ (set.*$//')"
+    fi
+    
+    prompt_segment 238 red $prompt_text
+  fi
+}
+
+
+## Git
 prompt_git() {
 
-  local PL_BRANCH_CHAR
-  
-  () {
-    local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-    PL_BRANCH_CHAR=$'\ue0a0'
-  }
-  
-  local ref dirty mode repo_path
+  local ref dirty mode repo_path prompt_text
   
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     
-    dirty="$(git status --porcelain --ignore-submodules)"
-    
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
     
-    if [[ -n $dirty ]]; then
-      prompt_segment white black
+    if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
+      prompt_segment 237 yellow
     else
-      prompt_segment green black
+      prompt_segment 237 green
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -90,19 +108,15 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '●'
-    zstyle ':vcs_info:*' unstagedstr '○'
+    zstyle ':vcs_info:*' stagedstr '\uF407'
+    zstyle ':vcs_info:*' unstagedstr '\uF417'
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
+    echo -n "${ref/refs\/heads\//}${vcs_info_msg_0_%% }${mode} "
   fi
 }
 
-## Dir: current working directory
-prompt_dir() {
-  prompt_segment blue black "${PWD/#$HOME/~}"
-}
 
 ## Virtualenv: current working virtualenv
 prompt_virtualenv() {
@@ -111,6 +125,7 @@ prompt_virtualenv() {
     prompt_segment blue black "(`basename $virtualenv_path`)"
   fi
 }
+
 
 ## Status:
 # - was there an error
@@ -126,15 +141,6 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-## Ruby version
-prompt_ruby_version() {
-  if (( $+commands[rbenv] )); then
-    prompt_segment red black "$(rbenv version | awk '{print $1}')"
-  else
-    echo ''
-  fi
-}
-
 ## Main prompt
 build_prompt() {
   RETVAL=$?
@@ -142,9 +148,9 @@ build_prompt() {
   prompt_virtualenv
   # prompt_context
   prompt_dir
-  prompt_ruby_version
+  prompt_ruby
   prompt_git
   prompt_end
 }
 
-PROMPT=$'%{%f%b%k%}$(build_prompt) \n'
+PROMPT=$'\n%{%f%b%k%}$(build_prompt)\n$ '
