@@ -1,68 +1,150 @@
-if (( $+commands[git] )); then
-  git="$commands[git]"
-else
-  git='/usr/bin/git'
-fi
+# agnoster's Theme - https://gist.github.com/3712874
+# A Powerline-inspired theme for ZSH
 
-git_branch() {
-  RQUERY=$(git symbolic-ref HEAD 2> /dev/null) || return
-  SQUERY=$(git status 2> /dev/null | tail -n 1)
-  BRANCH="${RQUERY#refs/heads/}"
-  if [[ $SQUERY == '' ]]; then
-    echo
+### Segment drawing
+# A few utility functions to make it easy and re-usable to draw segmented prompts
+
+CURRENT_BG='NONE'
+
+# Special Powerline characters
+
+() {
+  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+
+  SEGMENT_SEPARATOR=$'\ue0b0'
+}
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
   else
-    if [[ $SQUERY =~ ^nothing ]]; then
-      echo " %{$fg_bold[green]%}${BRANCH}%{$reset_color%}" # Clean
+    echo -n "%{$bg%}%{$fg%} "
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
+# End the prompt, closing any open segments
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    echo -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+    echo -n "%{%k%}"
+  fi
+  echo -n "%{%f%}"
+  CURRENT_BG=''
+}
+
+### Prompt components
+# Each component will draw itself, and hide itself if no information needs to be shown
+
+# Context: user@hostname (who am I and where am I)
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
+  fi
+}
+
+prompt_git() {
+
+  local PL_BRANCH_CHAR
+  
+  () {
+    local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+    PL_BRANCH_CHAR=$'\ue0a0'
+  }
+  
+  local ref dirty mode repo_path
+  
+  repo_path=$(git rev-parse --git-dir 2>/dev/null)
+
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    
+    dirty="$(git status --porcelain --ignore-submodules)"
+    
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
+    
+    if [[ -n $dirty ]]; then
+      prompt_segment white black
     else
-      echo " %{$fg_bold[red]%}${BRANCH}%{$reset_color%}" # Eeeew
+      prompt_segment green black
     fi
+
+    if [[ -e "${repo_path}/BISECT_LOG" ]]; then
+      mode=" <B>"
+    elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
+      mode=" >M<"
+    elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
+      mode=" >R>"
+    fi
+
+    setopt promptsubst
+    autoload -Uz vcs_info
+
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' get-revision true
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr '●'
+    zstyle ':vcs_info:*' unstagedstr '○'
+    zstyle ':vcs_info:*' formats ' %u%c'
+    zstyle ':vcs_info:*' actionformats ' %u%c'
+    vcs_info
+    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
   fi
 }
 
-git_status() {
-  QUERY=$(git status --porcelain -b 2> /dev/null)
-  MARK=''
-
-  if $(echo "$QUERY" | grep '^?? ' &> /dev/null); then
-    MARK="%{$fg_bold[green]%}•%{$reset_color%}" # Untracked
-  fi
-
-  echo $MARK
+## Dir: current working directory
+prompt_dir() {
+  prompt_segment blue black "${PWD/#$HOME/~}"
 }
 
-git_need_push() {
-  QUERY=$(git cherry -v @{upstream} 2> /dev/null)
-  if [[ $QUERY == '' ]]; then
-    echo ' '
-  else
-    echo "%{$fg_bold[magenta]%}•%{$reset_color%} "
+## Virtualenv: current working virtualenv
+prompt_virtualenv() {
+  local virtualenv_path="$VIRTUAL_ENV"
+  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    prompt_segment blue black "(`basename $virtualenv_path`)"
   fi
 }
 
-ruby_version() {
+## Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
+
+## Ruby version
+prompt_ruby_version() {
   if (( $+commands[rbenv] )); then
-    echo " %{$fg[yellow]%}‹$(rbenv version | awk '{print $1}')›%{$reset_color%}"
+    prompt_segment red black "$(rbenv version | awk '{print $1}')"
   else
     echo ''
   fi
 }
 
-directory_name() {
-  echo "%{$fg_bold[blue]%}${PWD/#$HOME/~}%{$reset_color%}"
+## Main prompt
+build_prompt() {
+  RETVAL=$?
+  # prompt_status
+  prompt_virtualenv
+  # prompt_context
+  prompt_dir
+  prompt_ruby_version
+  prompt_git
+  prompt_end
 }
 
-user_name() {
-  echo "%{$fg_bold[yellow]%}%n%{$reset_color%}"
-}
-
-host_name() {
- echo "%{$fg_bold[yellow]%}%m%{$reset_color%}"
-}
-
-export PROMPT=$'\n╭─ $(directory_name)$(ruby_version)$(git_branch)$(git_status)$(git_need_push)\n╰─$ '
-#export RPROMPT='$(ruby_version)'
-
-precmd() {
-  #title "zsh" "%m" "%55<...<%~"
-}
-
+PROMPT='%{%f%b%k%}$(build_prompt) '

@@ -1,11 +1,4 @@
-# Ermahgerd Dertferls
-
-HIGHLY VOLATILE AND INCOMPLETE!
-
-## Credits
-
-* [Zach Holman's dotfiles](https://github.com/holman/dotfiles/) Inspiration for topic areas and bootstrap script
-* [Dotfiles Are Meant To Be Forked - Zach Holman](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/)
+## More Dots
 
 ## Disclaimer
 
