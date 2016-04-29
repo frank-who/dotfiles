@@ -17,7 +17,7 @@ prompt_segment() {
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
     echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
   else
-    echo -n "%{$bg%}%{$fg%} "
+    echo -n "%{$bg%}%{$fg%}"
   fi
   CURRENT_BG=$1
   [[ -n $3 ]] && echo -n $3
@@ -42,18 +42,18 @@ prompt_context() {
   fi
 }
 
+prompt_root() {
+  prompt_segment black blue "\uF118"
+}
 
 ## Directory
 prompt_dir() {
-  local prompt_text
+  local dir
   
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    prompt_text="\uF418 ${PWD/#$HOME/~}"
-  else
-    prompt_text="\uF413 ${PWD/#$HOME/~}"
-  fi
-  
-  prompt_segment 240 blue $prompt_text
+  # dir="${dir}%4(c:...:)%3c"
+  dir="${PWD/#$HOME/~}"
+
+  prompt_segment 240 blue $dir
 }
 
 
@@ -78,15 +78,26 @@ prompt_ruby() {
 
 
 ## Git
+
 prompt_git() {
 
-  local ref dirty mode repo_path prompt_text
+  local ref dirty mode repo_path sha behind ahead current_branch
   
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
+    ref=$(git symbolic-ref HEAD 2> /dev/null)
+    
+    current_branch="${ref#refs/heads/}"
+
+    if [[ -n "$(command git rev-list origin/${current_branch}..HEAD 2> /dev/null)" ]]; then
+      ahead='\uF431 '
+    fi
+
+    if [[ -n "$(command git rev-list HEAD..origin/${current_branch} 2> /dev/null)" ]]; then
+      behind='\uF433 '
+    fi
     
     if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
       prompt_segment 237 yellow
@@ -101,6 +112,12 @@ prompt_git() {
     elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
       mode=" >R>"
     fi
+    
+    _sha=$(git rev-parse --short HEAD 2> /dev/null)
+    
+    if [ -n "$_sha" ]; then
+      sha=" \uF417 $_sha "
+    fi
 
     setopt promptsubst
     autoload -Uz vcs_info
@@ -108,12 +125,13 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '\uF407'
-    zstyle ':vcs_info:*' unstagedstr '\uF417'
+    zstyle ':vcs_info:*' stagedstr '\uF458'
+    zstyle ':vcs_info:*' unstagedstr '\uF45A'
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//}${vcs_info_msg_0_%% }${mode} "
+    
+    echo -n "${ahead}${behind}${current_branch}${vcs_info_msg_0_%%}${mode}${sha}"
   fi
 }
 
@@ -145,6 +163,7 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   # prompt_status
+  prompt_root
   prompt_virtualenv
   # prompt_context
   prompt_dir
