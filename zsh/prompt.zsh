@@ -92,15 +92,15 @@ prompt_git() {
     current_branch="${ref#refs/heads/}"
 
     if [[ -n "$(command git rev-list origin/${current_branch}..HEAD 2> /dev/null)" ]]; then
-      ahead=' %{%F{blue}%}\uF431'
+      ahead=' %{%F{magenta}%}\uF431'
     fi
 
     if [[ -n "$(command git rev-list HEAD..origin/${current_branch} 2> /dev/null)" ]]; then
-      behind=' %{%F{blue}%}\uF433'
+      behind=' %{%F{magenta}%}\uF433'
     fi
     
     if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
-      prompt_segment 237 white "%{%F{red}%}\uF418 "
+      prompt_segment 237 white "%{%F{yellow}%}\uF418 "
     else
       prompt_segment 237 white "%{%F{green}%}\uF418 "
     fi
@@ -116,7 +116,7 @@ prompt_git() {
     _sha=$(git rev-parse --short HEAD 2> /dev/null)
     
     if [ -n "$_sha" ]; then
-      sha=" %{%F{blue}%}\uF417 %{%F{white}%}$_sha"
+      sha=" %{%F{blue}%}\uF417 $_sha"
     fi
 
     setopt promptsubst
@@ -131,7 +131,7 @@ prompt_git() {
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
     
-    echo -n "%{%F{white}%}${current_branch}${sha}${vcs_info_msg_0_%%}${mode}${ahead}${behind} "
+    echo -n "${current_branch}${sha}${vcs_info_msg_0_%%}${mode}${ahead}${behind} "
   fi
 }
 
