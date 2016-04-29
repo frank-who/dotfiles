@@ -92,17 +92,17 @@ prompt_git() {
     current_branch="${ref#refs/heads/}"
 
     if [[ -n "$(command git rev-list origin/${current_branch}..HEAD 2> /dev/null)" ]]; then
-      ahead='\uF431 '
+      ahead=' %{%F{blue}%}\uF431'
     fi
 
     if [[ -n "$(command git rev-list HEAD..origin/${current_branch} 2> /dev/null)" ]]; then
-      behind='\uF433 '
+      behind=' %{%F{blue}%}\uF433'
     fi
     
     if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
-      prompt_segment 237 yellow
+      prompt_segment 237 white "%{%F{red}%}\uF418 "
     else
-      prompt_segment 237 green
+      prompt_segment 237 white "%{%F{green}%}\uF418 "
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -116,7 +116,7 @@ prompt_git() {
     _sha=$(git rev-parse --short HEAD 2> /dev/null)
     
     if [ -n "$_sha" ]; then
-      sha=" \uF417 $_sha "
+      sha=" %{%F{blue}%}\uF417 %{%F{white}%}$_sha"
     fi
 
     setopt promptsubst
@@ -125,13 +125,13 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr ' \uF458'
-    zstyle ':vcs_info:*' unstagedstr ' \uF45A'
+    zstyle ':vcs_info:*' stagedstr ' %{%F{green}%}\uF458'
+    zstyle ':vcs_info:*' unstagedstr ' %{%F{yellow}%}\uF45A'
     zstyle ':vcs_info:*' formats '%u%c'
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
     
-    echo -n "${ahead}${behind}${current_branch}${vcs_info_msg_0_%%}${mode}${sha}"
+    echo -n "%{%F{white}%}${current_branch}${sha}${vcs_info_msg_0_%%}${mode}${ahead}${behind} "
   fi
 }
 
