@@ -157,7 +157,6 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_virtualenv
   prompt_dir
   prompt_ruby
   prompt_git
