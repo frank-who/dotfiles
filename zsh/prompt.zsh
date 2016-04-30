@@ -3,12 +3,12 @@
 CURRENT_BG='NONE'
 
 GIT_PROMPT_BRANCH="\uF418"
-GIT_PROMPT_AHEAD="%{%F{magenta}%}\uF431NUM" # up-arrow
-GIT_PROMPT_BEHIND="%{%F{magenta}%}\uF433NUM"   # down arrow
+GIT_PROMPT_AHEAD="%{%F{magenta}%}\uF431NUM "  # up-arrow
+GIT_PROMPT_BEHIND="%{%F{magenta}%}\uF433NUM " # down arrow
 GIT_PROMPT_MERGING="%{%F{magenta}%}\uF419 "
-GIT_PROMPT_UNTRACKED="%{%F{green}%}\uF458 " # plus
-GIT_PROMPT_MODIFIED="%{%F{yellow}%}\uF45A " # circle
-GIT_PROMPT_STAGED="%{%F{green}%}\uF42E "    # tick
+GIT_PROMPT_UNTRACKED="%{%F{green}%}\uF458 "   # plus
+GIT_PROMPT_MODIFIED="%{%F{yellow}%}\uF45A "   # circle
+GIT_PROMPT_STAGED="%{%F{green}%}\uF42E "      # tick
 GIT_PROMPT_COMMIT="%{%F{blue}%}\uF417 SHA "
 GIT_PROMPT_DIRTY="%{%F{yellow}%}"
 GIT_PROMPT_CLEAN="%{%F{green}%}"
@@ -132,7 +132,7 @@ git_prompt_string() {
     state="%{%F{green}%}"
   fi
   
-  [ -n "$git_where" ] && echo "${state}$GIT_PROMPT_BRANCH ${state}${git_where#(refs/heads/|tags/)} $(parse_git_state) "
+  [ -n "$git_where" ] && echo "${state}$GIT_PROMPT_BRANCH ${state}${git_where#(refs/heads/|tags/)} $(parse_git_state)"
 }
 
 prompt_git() {
