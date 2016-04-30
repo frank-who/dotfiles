@@ -2,12 +2,18 @@
 
 CURRENT_BG='NONE'
 
-# Special Powerline characters
+GIT_PROMPT_BRANCH="\uF418"
+GIT_PROMPT_AHEAD="%{%F{magenta}%}\uF431NUM" # up-arrow
+GIT_PROMPT_BEHIND="%{%F{cyan}%}\uF433NUM"   # down arrow
+GIT_PROMPT_MERGING="%{%F{magenta}%}\uF419 "
+GIT_PROMPT_UNTRACKED="%{%F{green}%}\uF458 " # plus
+GIT_PROMPT_MODIFIED="%{%F{yellow}%}\uF45A " # circle
+GIT_PROMPT_STAGED="%{%F{green}%}\uF403 "    # repo up arrow
+GIT_PROMPT_COMMIT="%{%F{blue}%}\uF417 SHA "
+GIT_PROMPT_DIRTY="%{%F{yellow}%}"
+GIT_PROMPT_CLEAN="%{%F{green}%}"
 
-() {
-  local LC_ALL='' LC_CTYPE='en_US.UTF-8'
-  SEGMENT_SEPARATOR=$'\uE0B0'
-}
+SEGMENT_SEPARATOR=$'\uE0B0'
 
 ## Begin segment
 prompt_segment() {
@@ -23,6 +29,7 @@ prompt_segment() {
   [[ -n $3 ]] && echo -n $3
 }
 
+
 ## End segment
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
@@ -35,25 +42,12 @@ prompt_end() {
 }
 
 
-# Context: user@hostname (who am I and where am I)
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
-  fi
-}
-
-prompt_root() {
-  prompt_segment black blue "\uF118"
-}
-
 ## Directory
 prompt_dir() {
-  local dir
+  local DIR
+  DIR="${PWD/#$HOME/~}"
   
-  # dir="${dir}%4(c:...:)%3c"
-  dir="${PWD/#$HOME/~}"
-
-  prompt_segment 240 blue $dir
+  prompt_segment 239 blue $DIR
 }
 
 
@@ -77,95 +71,93 @@ prompt_ruby() {
 }
 
 
+## Git Branch
+parse_git_branch() {
+  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+}
+
+
+## Git State
+parse_git_state() {
+
+  local GIT_STATE=''
+
+  local SHA="$(git rev-parse --short HEAD 2> /dev/null)"
+  if [ -n "$SHA" ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_COMMIT//SHA/$SHA}
+  fi
+
+  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
+  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
+  fi
+
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
+  fi
+
+  if ! git diff --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
+  fi
+
+  if ! git diff --cached --quiet 2> /dev/null; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
+  fi
+
+  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_AHEAD" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
+  fi
+
+  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$NUM_BEHIND" -gt 0 ]; then
+    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+  fi
+
+  if [[ -n $GIT_STATE ]]; then
+    echo "$GIT_STATE"
+  fi
+
+}
+
+
 ## Git
+git_prompt_string() {
+  local git_where="$(parse_git_branch)"
+  local state
+
+  if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
+    state="%{%F{yellow}%}"
+  else
+    state="%{%F{green}%}"
+  fi
+  
+  [ -n "$git_where" ] && echo "${state}$GIT_PROMPT_BRANCH ${state}${git_where#(refs/heads/|tags/)} $(parse_git_state) "
+}
 
 prompt_git() {
-
-  local ref dirty mode repo_path sha behind ahead current_branch
-  
-  repo_path=$(git rev-parse --git-dir 2>/dev/null)
-
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    
-    ref=$(git symbolic-ref HEAD 2> /dev/null)
-    
-    current_branch="${ref#refs/heads/}"
-
-    if [[ -n "$(command git rev-list origin/${current_branch}..HEAD 2> /dev/null)" ]]; then
-      ahead=' %{%F{magenta}%}\uF431'
-    fi
-
-    if [[ -n "$(command git rev-list HEAD..origin/${current_branch} 2> /dev/null)" ]]; then
-      behind=' %{%F{magenta}%}\uF433'
-    fi
-    
-    if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
-      prompt_segment 237 white "%{%F{yellow}%}\uF418 "
-    else
-      prompt_segment 237 white "%{%F{green}%}\uF418 "
-    fi
-
-    if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-      mode=" <B>"
-    elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-      mode=" >M<"
-    elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-      mode=" >R>"
-    fi
-    
-    _sha=$(git rev-parse --short HEAD 2> /dev/null)
-    
-    if [ -n "$_sha" ]; then
-      sha=" %{%F{blue}%}\uF417 $_sha"
-    fi
-
-    setopt promptsubst
-    autoload -Uz vcs_info
-
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr ' %{%F{green}%}\uF458'
-    zstyle ':vcs_info:*' unstagedstr ' %{%F{yellow}%}\uF45A'
-    zstyle ':vcs_info:*' formats '%u%c'
-    zstyle ':vcs_info:*' actionformats '%u%c'
-    vcs_info
-    
-    echo -n "${current_branch}${sha}${vcs_info_msg_0_%%}${mode}${ahead}${behind} "
-  fi
+  setopt promptsubst
+  prompt_segment 237 white "$(git_prompt_string)"
 }
 
 
-## Virtualenv: current working virtualenv
-prompt_virtualenv() {
-  local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
-  fi
-}
-
-
-## Status:
-# - was there an error
-# - am I root
-# - are there background jobs?
+## Status
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
-
+  symbols+="%{%F{229}%}\uE0CC"
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}\uF468"
+  # [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡" # - am I root
+  # [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙" # are there background jobs?
+  
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  # prompt_status
-  prompt_root
+  prompt_status
   prompt_virtualenv
-  # prompt_context
   prompt_dir
   prompt_ruby
   prompt_git
