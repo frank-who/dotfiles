@@ -145,7 +145,7 @@ prompt_git() {
 prompt_status() {
   local symbols
   symbols=()
-  symbols+="%{%F{229}%}\uE0CC"
+  symbols+="%{%F{239}%}\uE0CC"
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}\uF468"
   # [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡" # - am I root
   # [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙" # are there background jobs?
