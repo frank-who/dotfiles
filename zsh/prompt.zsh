@@ -4,7 +4,7 @@ CURRENT_BG='NONE'
 
 GIT_PROMPT_BRANCH="\uF418"
 GIT_PROMPT_AHEAD="%{%F{magenta}%}\uF431NUM" # up-arrow
-GIT_PROMPT_BEHIND="%{%F{cyan}%}\uF433NUM"   # down arrow
+GIT_PROMPT_BEHIND="%{%F{magenta}%}\uF433NUM"   # down arrow
 GIT_PROMPT_MERGING="%{%F{magenta}%}\uF419 "
 GIT_PROMPT_UNTRACKED="%{%F{green}%}\uF458 " # plus
 GIT_PROMPT_MODIFIED="%{%F{yellow}%}\uF45A " # circle
