@@ -73,7 +73,7 @@ prompt_ruby() {
 
 ## Git Branch
 parse_git_branch() {
-  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+  git symbolic-ref HEAD 2> /dev/null
 }
 
 
@@ -136,8 +136,10 @@ git_prompt_string() {
 }
 
 prompt_git() {
-  setopt promptsubst
-  prompt_segment 237 white "$(git_prompt_string)"
+  if [ -d .git ]; then
+    setopt promptsubst
+    prompt_segment 237 white "$(git_prompt_string)"
+  fi
 }
 
 
@@ -145,8 +147,11 @@ prompt_git() {
 prompt_status() {
   local symbols
   symbols=()
-  symbols+="%{%F{239}%}\uE0CC"
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}\uF468"
+  if [[ $RETVAL -ne 0 ]]; then
+    symbols+="%{%F{red}%}\uE0CC"
+  else
+    symbols+="%{%F{239}%}\uE0CC"
+  fi
   # [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡" # - am I root
   # [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙" # are there background jobs?
   

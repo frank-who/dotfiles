@@ -1,7 +1,7 @@
 function gpr {
   repo=`git remote -v | head -1 | sed "s/git@github.com://" | cut -c8-999 | sed "s/\.git .*//"`
   current_branch="$(git symbolic-ref HEAD --short)"
-  branch="master...$current_branch"
+  branch="develop...$current_branch"
   if [ $1 ]; then
     branch="$1...$current_branch"
   fi
