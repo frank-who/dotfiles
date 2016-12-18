@@ -1,5 +1,5 @@
 export TERM='xterm-256color'
-export ZSH=$HOME/.dotfiles
+export ZSH=$HOME/dotfiles
 export PROJECTS=$HOME/Projects
 export CODE=$HOME/Code
 
@@ -24,9 +24,3 @@ compinit -i
 
 unset config_files
 
-alias boot-base45='cd ~/Code/P45/base45/spec/dummy; rails s -p 3045'
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

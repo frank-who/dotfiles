@@ -31,7 +31,7 @@ configure_git() {
   sed -e "s/GITUSERNAME/$git_user_name/g" \
   -e "s/GITUSEREMAIL/$git_user_email/g" \
   -e "s,DOTFILESPATH,$DOTFILES_PATH,g" \
-  git/gitconfig.example > git/gitconfig.symlink
+  git/gitconfig.example > git/.gitconfig.symlink
 
   success 'Configure Git'
 }
@@ -59,7 +59,7 @@ install_dotfiles() {
   skip_all=false
 
   for source in `find $DOTFILES_PATH -maxdepth 2 -name \*.symlink`; do
-    dest="$HOME/.`basename \"${source%.*}\"`"
+    dest="$HOME/`basename \"${source%.*}\"`"
 
     if [ -f $dest ] || [ -d $dest ]; then
       overwrite=false
