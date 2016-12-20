@@ -1,0 +1,6 @@
+brew 'imagemagick'
+brew 'node'
+brew 'readline'
+brew 'postgresql'
+brew 'yarn'
+brew 'wget'
