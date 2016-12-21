@@ -1,0 +1,5 @@
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="./bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="/usr/local/lib/node_modules/.bin:$PATH"

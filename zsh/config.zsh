@@ -7,8 +7,8 @@ export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 
-fpath=($ZSH/zsh/functions $fpath)
-autoload -U $ZSH/zsh/functions/*(:t)
+fpath=($ZSH/functions $fpath)
+autoload -U $ZSH/functions/*(:t)
 
 # Directories
 setopt auto_name_dirs
