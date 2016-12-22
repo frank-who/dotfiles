@@ -1,10 +1,9 @@
 export TERM='xterm-256color'
-export ZSH=$HOME/dotfiles
-export PROJECTS=$HOME/Projects
+export ZSH=$HOME/dotfiles/zsh
 export CODE=$HOME/Code
 
 typeset -U config_files
-config_files=($ZSH/*/*.zsh)
+config_files=($ZSH/*.zsh)
 
 # Load the path files
 for file in ${(M)config_files:#*/path.zsh}; do
@@ -17,10 +16,9 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
 done
 
 # Load ZSH Syntax Highlighting
-source $ZSH/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U compinit
-compinit -i
+compinit
 
 unset config_files
-

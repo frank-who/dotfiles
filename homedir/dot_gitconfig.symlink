@@ -1,0 +1,31 @@
+[user]
+  name  = Frank
+  email = franks921@users.noreply.github.com
+
+[core]
+  autocrlf     = input
+  editor       = atom
+  excludesfile = ~/.gitexcludes
+  ignorecase   = false
+  whitespace   = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[pager]
+	diff = false
+
+[color]
+  branch = auto
+  diff   = auto
+  status = auto
+  ui     = true
+
+[pretty]
+  custom = format:%C(red)%h%Creset %C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s %C(bold green)(%cr)
+
+[push]
+  default = current
+
+[help]
+  autocorrect = 1
+
+[alias]
+  lg = log --stat --pretty=custom --abbrev-commit
