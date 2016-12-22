@@ -21,7 +21,7 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit -m'
 alias gco='git checkout'
-alias gd='git diff'
+alias gd='git diff --color | diff-so-fancy'
 alias gl='git lg'
 alias gpl='git pull --prune'
 alias gps='git push origin HEAD'
@@ -57,6 +57,7 @@ alias rmdsstores='sudo find ~/ -name .DS_Store -exec rm {} \;'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # Misc
+alias bb='brew bundle'
 alias e='atom .'
 
 # Make sudo understand aliases

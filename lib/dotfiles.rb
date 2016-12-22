@@ -27,7 +27,8 @@ end
 module Dotfiles
 
   def file_basename(file)
-    File.basename(file).gsub(/^dot_/, '.')
+    file.to_s.gsub("#{ROOT_PATH}/homedir/", '')
+             .gsub(/dot_/, '.')
   end
 
   def newline(returns=1)

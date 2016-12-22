@@ -1,2 +1,2 @@
 git/.gitconfig.symlink
-backup_*
+backups/*_backup

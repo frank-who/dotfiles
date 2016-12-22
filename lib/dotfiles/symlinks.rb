@@ -1,12 +1,20 @@
+require 'time'
+
 module Dotfiles
   class Symlinks
 
     def self.run
       message('Symlinks:'.bold, indent: 0)
-      max_width = Dir["#{ROOT_PATH}/home/*.symlink"].map { |file| file_basename(file).length }.max
+      max_width = Dir["#{ROOT_PATH}/homedir/**/*.symlink"].map { |file| file_basename(file).length }.max
 
-      Dir["#{ROOT_PATH}/home/*.symlink"].each do |file|
-        create_symlink(file, max_width)
+      Dir["#{ROOT_PATH}/homedir/**/*.symlink"].each do |file|
+        if File.directory?(file)
+          Dir["#{file}/*"].each do |dir_file|
+            create_symlink(dir_file, max_width)
+          end
+        else
+          create_symlink(file, max_width)
+        end
       end
     end
 
@@ -30,7 +38,7 @@ module Dotfiles
               FileUtils.ln_s(source, target)
             end
           elsif File.exist?(target)
-            backup       = "#{target}_backup.#{Date.today.strftime('%Y%m%d%H%M%S')}"
+            backup       = File.join(ROOT_PATH, 'backups', "#{File.basename(target)}.#{Time.now.strftime('%Y%m%d%H%M%S')}_backup")
             message_part = "[Overwritten] #{target}".red
 
             FileUtils.mv(target, backup)
