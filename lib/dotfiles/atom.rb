@@ -50,6 +50,7 @@ module Dotfiles
           tool-bar
           trailing-spaces
           tree-view-autoresize
+          tree-view-git-modified
         /
 
         list.each do |package|
