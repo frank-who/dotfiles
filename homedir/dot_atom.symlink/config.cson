@@ -33,6 +33,7 @@
     enableForCursorLines: true
     enableForIndentation: true
   "tree-view-autoresize":
+    maximumWidth: 500
     padding: 10
   welcome:
     showOnStartup: false
