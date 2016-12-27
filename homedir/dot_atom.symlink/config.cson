@@ -21,6 +21,7 @@
     disableWhenNoConfigFile: true
   pigments:
     mergeColorDuplicates: true
+    sassShadeAndTintImplementation: "bourbon"
   rspec:
     command: "bundle exec rspec -f d"
   tabs:
