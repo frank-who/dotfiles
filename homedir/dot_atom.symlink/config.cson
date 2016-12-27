@@ -1,4 +1,8 @@
 "*":
+  "color-picker":
+    abbreviateValues: true
+    preferredFormat: "HEX"
+    uppercaseColorValues: true
   core:
     disabledPackages: [
       "metrics"

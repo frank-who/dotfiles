@@ -35,6 +35,7 @@ module Dotfiles
           alignment
           atom-beautify
           auto-reveal-in-sidebar
+          color-picker
           flex-tool-bar
           language-slim
           linter
