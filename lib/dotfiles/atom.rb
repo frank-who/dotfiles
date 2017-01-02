@@ -34,6 +34,7 @@ module Dotfiles
         list = %w/
           alignment
           atom-beautify
+          atom-clock
           auto-reveal-in-sidebar
           color-picker
           flex-tool-bar

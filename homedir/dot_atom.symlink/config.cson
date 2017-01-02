@@ -1,4 +1,7 @@
 "*":
+  "atom-clock":
+    dateFormat: " H:mm"
+    showClockIcon: true
   "color-picker":
     abbreviateValues: true
     preferredFormat: "HEX"
