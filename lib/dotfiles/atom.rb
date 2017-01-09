@@ -32,7 +32,7 @@ module Dotfiles
         message('Packages:'.bold, indent: 2)
 
         list = %w/
-          alignment
+          aligner
           atom-beautify
           atom-clock
           auto-reveal-in-sidebar

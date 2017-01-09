@@ -35,7 +35,7 @@
     usePreviewTabs: true
   "tool-bar":
     fullWidth: false
-    iconSize: "12px"
+    iconSize: "16px"
     position: "Top"
   "trailing-spaces":
     enableForCursorLines: true

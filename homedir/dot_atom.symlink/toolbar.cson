@@ -26,6 +26,14 @@
   { type: "spacer" }
   {
     type:     "button"
+    icon:     "paintcan"
+    callback: "pigments:copy-as-hex"
+    tooltip:  "Pigments: Copy As Hex"
+    disable:  "!scss"
+  }
+  { type: "spacer" }
+  {
+    type:     "button"
     icon:     "file-code"
     callback: "rspec:run"
     tooltip:  "RSpec: Run ⌃⌥T"
