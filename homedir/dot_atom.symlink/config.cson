@@ -13,6 +13,8 @@
     disabledPackages: [
       "metrics"
       "preview"
+      "linter-eslint"
+      "linter-rubocop"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
@@ -27,13 +29,51 @@
   "file-types":
     arb: "source.ruby"
     axslsx: "source.ruby"
+  linter:
+    errorPanelHeight: 100
+  "linter-codeclimate":
+    executablePath: "/usr/local/bin/codeclimate"
+    init: false
   "linter-rubocop":
     disableWhenNoConfigFile: true
   pigments:
+    extendAutocompleteToColorValue: true
+    extendAutocompleteToVariables: true
     mergeColorDuplicates: true
     sassShadeAndTintImplementation: "bourbon"
-  rspec:
-    command: "bundle exec rspec -f d"
+  "platformio-ide-terminal":
+    ansiColors:
+      normal:
+        black: "#282c34"
+        blue: "#5daef2"
+        cyan: "#51b6c3"
+        green: "#96c475"
+        magenta: "#c775e0"
+        red: "#e26b73"
+        white: "#abb2bf"
+        yellow: "#d29b61"
+      zBright:
+        brightBlack: "#282c34"
+        brightBlue: "#5daef2"
+        brightCyan: "#51b6c3"
+        brightGreen: "#96c475"
+        brightMagenta: "#c775e0"
+        brightRed: "#e26b73"
+        brightWhite: "#abb2bf"
+        brightYellow: "#d29b61"
+    core: {}
+    style:
+      defaultPanelHeight: "40%"
+      fontFamily: "Knack Nerd Font"
+      fontSize: "10"
+      theme: "one-dark"
+  "ruby-test":
+    rspecAllCommand: "bundle exec rspec -f d --tty spec"
+    rspecFileCommand: "bundle exec rspec -f d --tty {relative_path}"
+    rspecSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
+    specFramework: "rspec"
+  "split-diff":
+    hideTreeView: true
   tabs:
     usePreviewTabs: true
   "tool-bar":

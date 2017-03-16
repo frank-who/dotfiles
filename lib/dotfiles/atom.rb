@@ -45,8 +45,9 @@ module Dotfiles
           pigments
           preview
           rails-i18n-autocomplete
-          rspec
           sort-lines
+          split-diff
+          test-ruby
           title-case
           toggle-quotes
           tool-bar

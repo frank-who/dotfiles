@@ -37,7 +37,7 @@
     icon:     "file-code"
     callback: "rspec:run"
     tooltip:  "RSpec: Run ⌃⌥T"
-    disable:  "!_spec.rb"
+    # disable:  "!.rb"
     style:
       border: "1px solid #FA4F28"
   }
@@ -46,7 +46,7 @@
     icon:     "code"
     callback: "rspec:run-for-line"
     tooltip:  "RSpec: Run for Line ⌃⌥X"
-    disable:  "!_spec.rb"
+    # disable:  "!.rb"
     style:
       border: "1px solid #FA4F28"
   }
@@ -55,7 +55,7 @@
     icon:     "sync"
     callback: "rspec:run-last"
     tooltip:  "RSpec: Run Last ⌃⌥E"
-    disable:  "!_spec.rb"
+    # disable:  "!.rb"
     style:
       border: "1px solid #FA4F28"
   }
