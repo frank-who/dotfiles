@@ -1,9 +1,13 @@
 gpr() {
-  repo=`git remote -v | head -1 | sed "s/git@github.com://" | cut -c8-999 | sed "s/\.git .*//"`
+  repo=`git remote -v | grep github | head -1 | sed "s/git@github.com://" | cut -c8-999 | sed "s/\.git .*//"`
   current_branch="$(git symbolic-ref HEAD --short)"
   branch="develop...$current_branch"
+
   if [ $1 ]; then
     branch="$1...$current_branch"
+  else
+    branch=$(current_branch)
   fi
+
   open "https://github.com/$repo/compare/$branch?expand=1"
 }
