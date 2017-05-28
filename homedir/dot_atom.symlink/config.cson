@@ -5,20 +5,24 @@
   "atom-clock":
     dateFormat: " H:mm"
     showClockIcon: true
+  "atom-package-deps":
+    ignored: []
   "color-picker":
     abbreviateValues: true
     preferredFormat: "HEX"
     uppercaseColorValues: true
   core:
+    closeDeletedFileTabs: true
     disabledPackages: [
       "metrics"
       "preview"
       "linter-eslint"
       "linter-rubocop"
+      "linter-codeclimate"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
-    useCustomTitleBar: true
+    titleBar: "custom-inset"
   editor:
     fontFamily: "Roboto Mono"
     fontSize: 11
@@ -29,13 +33,16 @@
   "file-types":
     arb: "source.ruby"
     axslsx: "source.ruby"
-  linter:
-    errorPanelHeight: 100
+  linter: {}
   "linter-codeclimate":
     executablePath: "/usr/local/bin/codeclimate"
     init: false
   "linter-rubocop":
     disableWhenNoConfigFile: true
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
+  "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
     extendAutocompleteToVariables: true
@@ -72,6 +79,7 @@
     rspecFileCommand: "bundle exec rspec -f d --tty {relative_path}"
     rspecSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
     specFramework: "rspec"
+  "scroll-searcher": {}
   "split-diff":
     hideTreeView: true
   tabs:

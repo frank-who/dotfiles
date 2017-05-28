@@ -26,38 +26,27 @@
   { type: "spacer" }
   {
     type:     "button"
-    icon:     "paintcan"
-    callback: "pigments:copy-as-hex"
-    tooltip:  "Pigments: Copy As Hex"
-    disable:  "!scss"
-  }
-  { type: "spacer" }
-  {
-    type:     "button"
     icon:     "file-code"
     callback: "rspec:run"
-    tooltip:  "RSpec: Run ⌃⌥T"
-    # disable:  "!.rb"
+    tooltip:  "Ruby Test: Test All ⌃⌘Y"
     style:
-      border: "1px solid #FA4F28"
+      color: "#FA4F28"
   }
   {
     type:     "button"
     icon:     "code"
-    callback: "rspec:run-for-line"
-    tooltip:  "RSpec: Run for Line ⌃⌥X"
-    # disable:  "!.rb"
+    callback: "ruby-test:test-single"
+    tooltip:  "Ruby Test: Test Single ⌃⌘R"
     style:
-      border: "1px solid #FA4F28"
+      color: "#FA4F28"
   }
   {
     type:     "button"
     icon:     "sync"
-    callback: "rspec:run-last"
-    tooltip:  "RSpec: Run Last ⌃⌥E"
-    # disable:  "!.rb"
+    callback: "ruby-test:test-previous"
+    tooltip:  "Ruby Test: Test Previous ⌃⌘E"
     style:
-      border: "1px solid #FA4F28"
+      color: "#FA4F28"
   }
   { type: "spacer" }
   {

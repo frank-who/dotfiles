@@ -1,5 +1,5 @@
 gh() {
-  repo=`git remote -v | head -1 | sed "s/git@github.com://" | cut -c8-999 | sed "s/\.git .*//"`
+  repo=`git config remote.origin.url | cut -f2 -d. | tr ':' /`
   branch="$(git symbolic-ref HEAD --short)"
-  open "https://github.com/$repo/tree/$branch"
+  open "https://github.$repo/tree/$branch"
 }
