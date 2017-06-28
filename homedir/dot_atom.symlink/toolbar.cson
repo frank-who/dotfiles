@@ -5,14 +5,14 @@
 [
   {
     type:     "button"
-    iconset:  "fa"
-    icon:     "columns"
-    callback: "pane:split-right-and-move-active-item"
-    tooltip:  "Pane: Split Right"
+    icon:     "octoface"
+    callback: "github:toggle-git-tab"
+    tooltip:  "GitHub: Toggle Git Tab"
   }
   {
     type:     "button"
-    icon:     "paintcan"
+    iconset:  "fa"
+    icon:     "magic"
     callback: "atom-beautify:beautify-editor"
     tooltip:  "Atom Beautify: Beautify Editor ⌃⌥X"
   }
@@ -27,8 +27,8 @@
   {
     type:     "button"
     icon:     "file-code"
-    callback: "rspec:run"
-    tooltip:  "Ruby Test: Test All ⌃⌘Y"
+    callback: "ruby-test:test-file"
+    tooltip:  "Ruby Test: Test File ⌃⌘T"
     style:
       color: "#FA4F28"
   }
@@ -50,11 +50,19 @@
   }
   { type: "spacer" }
   {
-    type:     "button"
-    icon:     "gear"
-    callback: "flex-tool-bar:edit-config-file"
-    tooltip:  "Edit Tool Bar"
+    type:    "url"
+    icon:    "file"
+    url:     "https://foundation.zurb.com/sites/docs"
+    tooltip: "Foundation Documentation"
     style:
-      color: "#3A3F4B"
+      color: "#1779BA"
+  }
+  {
+    type:    "url"
+    icon:    "file-code"
+    url:     "https://github.com/zurb/foundation-rails/blob/master/vendor/assets/scss/settings/_settings.scss"
+    tooltip: "Foundation Defaults"
+    style:
+      color: "#1779BA"
   }
 ]

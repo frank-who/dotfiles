@@ -25,7 +25,7 @@
     titleBar: "custom-inset"
   editor:
     fontFamily: "Roboto Mono"
-    fontSize: 11
+    fontSize: 10
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
@@ -33,6 +33,7 @@
   "file-types":
     arb: "source.ruby"
     axslsx: "source.ruby"
+  "flex-tool-bar": {}
   linter: {}
   "linter-codeclimate":
     executablePath: "/usr/local/bin/codeclimate"
@@ -41,7 +42,6 @@
     disableWhenNoConfigFile: true
   "linter-ui-default":
     panelHeight: 69
-    showPanel: true
   "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
@@ -70,7 +70,8 @@
         brightYellow: "#d29b61"
     core: {}
     style:
-      defaultPanelHeight: "40%"
+      animationSpeed: 0
+      defaultPanelHeight: "240px"
       fontFamily: "Knack Nerd Font"
       fontSize: "10"
       theme: "one-dark"
@@ -87,10 +88,14 @@
   "tool-bar":
     fullWidth: false
     iconSize: "16px"
-    position: "Top"
+    position: "Bottom"
   "trailing-spaces":
     enableForCursorLines: true
     enableForIndentation: true
+  "tree-view":
+    alwaysOpenExisting: true
+    autoReveal: true
+    squashDirectoryNames: true
   "tree-view-autoresize":
     maximumWidth: 500
     padding: 10
