@@ -35,7 +35,6 @@ module Dotfiles
           aligner
           atom-beautify
           atom-clock
-          auto-reveal-in-sidebar
           color-picker
           flex-tool-bar
           language-slim
@@ -53,7 +52,6 @@ module Dotfiles
           tool-bar
           trailing-spaces
           tree-view-autoresize
-          tree-view-git-modified
         /
 
         list.each do |package|
