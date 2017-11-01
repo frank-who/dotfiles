@@ -33,14 +33,18 @@ module Dotfiles
 
         list = %w/
           aligner
+          aligner-javascript
+          aligner-ruby
+          aligner-scss
           atom-beautify
           atom-clock
+          atom-ctags
           color-picker
+          file-icons
           flex-tool-bar
           language-slim
           linter
-          linter-eslint
-          linter-rubocop
+          linter-codeclimate
           pigments
           preview
           rails-i18n-autocomplete

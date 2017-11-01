@@ -59,6 +59,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 # Misc
 alias bb='brew bundle'
 alias e='atom .'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # Make sudo understand aliases
 alias sudo='sudo '

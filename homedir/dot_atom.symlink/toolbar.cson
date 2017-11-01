@@ -26,19 +26,19 @@
   { type: "spacer" }
   {
     type:     "button"
-    icon:     "file-code"
+    icon:     "ruby-test"
     callback: "ruby-test:test-file"
     tooltip:  "Ruby Test: Test File ⌃⌘T"
     style:
-      color: "#FA4F28"
+      color: "#E26B73"
   }
   {
     type:     "button"
-    icon:     "code"
+    icon:     "generic-test"
     callback: "ruby-test:test-single"
     tooltip:  "Ruby Test: Test Single ⌃⌘R"
     style:
-      color: "#FA4F28"
+      color: "#E26B73"
   }
   {
     type:     "button"
@@ -46,7 +46,7 @@
     callback: "ruby-test:test-previous"
     tooltip:  "Ruby Test: Test Previous ⌃⌘E"
     style:
-      color: "#FA4F28"
+      color: "#E26B73"
   }
   { type: "spacer" }
   {
@@ -54,15 +54,11 @@
     icon:    "file"
     url:     "https://foundation.zurb.com/sites/docs"
     tooltip: "Foundation Documentation"
-    style:
-      color: "#1779BA"
   }
   {
     type:    "url"
     icon:    "file-code"
     url:     "https://github.com/zurb/foundation-rails/blob/master/vendor/assets/scss/settings/_settings.scss"
     tooltip: "Foundation Defaults"
-    style:
-      color: "#1779BA"
   }
 ]

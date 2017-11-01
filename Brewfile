@@ -7,6 +7,7 @@ tap 'codeclimate/formulae'
 
 brew 'certbot'
 brew 'codeclimate'
+brew 'ctags'
 brew 'diff-so-fancy'
 brew 'git'
 brew 'imagemagick'

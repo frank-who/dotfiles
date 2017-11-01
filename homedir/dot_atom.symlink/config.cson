@@ -16,26 +16,34 @@
     disabledPackages: [
       "metrics"
       "preview"
-      "linter-eslint"
-      "linter-rubocop"
-      "linter-codeclimate"
+      "atom-ctags"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
     titleBar: "custom-inset"
   editor:
+    autoIndentOnPaste: false
     fontFamily: "Roboto Mono"
-    fontSize: 11
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
     userId: "df0bbee6-046c-1b58-c77a-ecce2568a8c3"
+  "file-icons":
+    onChanges: true
   "file-types":
     arb: "source.ruby"
     axslsx: "source.ruby"
+    lsg: "text.md"
   "flex-tool-bar": {}
-  linter: {}
+  linter:
+    disabledProviders: [
+      "Code Climate"
+    ]
+    lintOnOpen: false
+    lintPreviewTabs: false
   "linter-codeclimate":
+    disableTimeout: true
     executablePath: "/usr/local/bin/codeclimate"
     init: false
   "linter-rubocop":
@@ -48,6 +56,7 @@
     extendAutocompleteToVariables: true
     mergeColorDuplicates: true
     sassShadeAndTintImplementation: "bourbon"
+    sortPaletteColors: "by color"
   "platformio-ide-terminal":
     ansiColors:
       normal:
@@ -71,7 +80,7 @@
     core: {}
     style:
       animationSpeed: 0
-      defaultPanelHeight: "240px"
+      defaultPanelHeight: "30%"
       fontFamily: "Knack Nerd Font"
       fontSize: "10"
       theme: "one-dark"
