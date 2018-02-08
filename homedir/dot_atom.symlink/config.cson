@@ -20,6 +20,10 @@
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
+    themes: [
+      "dracula-ui"
+      "dracula-syntax"
+    ]
     titleBar: "custom-inset"
   editor:
     autoIndentOnPaste: false

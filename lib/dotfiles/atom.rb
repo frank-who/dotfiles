@@ -40,6 +40,8 @@ module Dotfiles
           atom-clock
           atom-ctags
           color-picker
+          dracula-syntax
+          dracula-ui
           file-icons
           flex-tool-bar
           language-slim
