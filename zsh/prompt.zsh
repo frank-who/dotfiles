@@ -1,4 +1,5 @@
 # http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+# https://github.com/ryanoasis/nerd-fonts#glyph-sets
 
 CURRENT_BG='NONE'
 
@@ -52,6 +53,16 @@ prompt_dir() {
 
 
 ## Ruby
+prompt_python() {
+  local prompt_text
+
+  if (( $+commands[pyenv] )); then
+    prompt_segment 238 yellow "$(pyenv version-name | sed -e 's/ (set.*$//')"
+  fi
+}
+
+
+## Python
 prompt_ruby() {
   local prompt_text
 
@@ -66,7 +77,7 @@ prompt_ruby() {
       prompt_text="$(rbenv version | sed -e 's/ (set.*$//')"
     fi
 
-    prompt_segment 238 red $prompt_text
+    prompt_segment 238 red "$prompt_text"
   fi
 }
 
@@ -163,7 +174,12 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_dir
-  prompt_ruby
+  if [[ -a ./Gemfile ]]; then
+    prompt_ruby
+  fi
+  if [[ -a ./manage.py ]]; then
+    prompt_python
+  fi
   prompt_git
   prompt_end
 }
