@@ -64,30 +64,30 @@
   "platformio-ide-terminal":
     ansiColors:
       normal:
-        black: "#282c34"
-        blue: "#5daef2"
-        cyan: "#51b6c3"
-        green: "#96c475"
-        magenta: "#c775e0"
-        red: "#e26b73"
-        white: "#abb2bf"
-        yellow: "#d29b61"
+        black: "#000000"
+        blue: "#caa9fa"
+        cyan: "#9aedfe"
+        green: "#5af78e"
+        magenta: "#ff92d0"
+        red: "#ff6e67"
+        white: "#c7c7c7"
+        yellow: "#f4f99d"
       zBright:
-        brightBlack: "#282c34"
-        brightBlue: "#5daef2"
-        brightCyan: "#51b6c3"
-        brightGreen: "#96c475"
-        brightMagenta: "#c775e0"
-        brightRed: "#e26b73"
-        brightWhite: "#abb2bf"
-        brightYellow: "#d29b61"
+        brightBlack: "#686868"
+        brightBlue: "#caa9fa"
+        brightCyan: "#9aedfe"
+        brightGreen: "#5af78e"
+        brightMagenta: "#ff92d0"
+        brightRed: "#ff6e67"
+        brightWhite: "#ffffff"
+        brightYellow: "#f4f99d"
     core: {}
     style:
       animationSpeed: 0
       defaultPanelHeight: "30%"
       fontFamily: "Knack Nerd Font"
       fontSize: "10"
-      theme: "one-dark"
+      theme: "dracula"
   "ruby-test":
     rspecAllCommand: "bundle exec rspec -f d --tty spec"
     rspecFileCommand: "bundle exec rspec -f d --tty {relative_path}"
