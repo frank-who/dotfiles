@@ -1,6 +1,6 @@
 [user]
-  name  = Frank
-  email = franks921@users.noreply.github.com
+	name = Frank
+	email = franks921@users.noreply.github.com
 
 [core]
   autocrlf     = input
@@ -31,3 +31,8 @@
   lg = log --stat --pretty=custom --abbrev-commit
   prune = fetch --prune
   undo = reset --soft HEAD^
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
