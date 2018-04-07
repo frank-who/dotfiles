@@ -16,7 +16,6 @@
     disabledPackages: [
       "metrics"
       "preview"
-      "atom-ctags"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
@@ -52,8 +51,7 @@
     init: false
   "linter-rubocop":
     disableWhenNoConfigFile: true
-  "linter-ui-default":
-    panelHeight: 69
+  "linter-ui-default": {}
   "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true

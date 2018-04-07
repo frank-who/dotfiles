@@ -30,7 +30,7 @@
     callback: "ruby-test:test-file"
     tooltip:  "Ruby Test: Test File ⌃⌘T"
     style:
-      color: "#E26B73"
+      color: "#CAA9FA"
   }
   {
     type:     "button"
@@ -38,7 +38,7 @@
     callback: "ruby-test:test-single"
     tooltip:  "Ruby Test: Test Single ⌃⌘R"
     style:
-      color: "#E26B73"
+      color: "#CAA9FA"
   }
   {
     type:     "button"
@@ -46,7 +46,7 @@
     callback: "ruby-test:test-previous"
     tooltip:  "Ruby Test: Test Previous ⌃⌘E"
     style:
-      color: "#E26B73"
+      color: "#CAA9FA"
   }
   { type: "spacer" }
   {

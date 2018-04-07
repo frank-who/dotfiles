@@ -159,14 +159,14 @@ prompt_status() {
   local symbols
   symbols=()
   if [[ $RETVAL -ne 0 ]]; then
-    symbols+="%{%F{red}%}\uE0CC"
+    symbols+=red
   else
-    symbols+="%{%F{239}%}\uE0CC"
+    symbols+=241
   fi
   # [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡" # - am I root
   # [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙" # are there background jobs?
 
-  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment $symbols default " %F{black}%T"
 }
 
 ## Main prompt
