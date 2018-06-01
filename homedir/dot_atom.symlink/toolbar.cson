@@ -11,16 +11,23 @@
   }
   {
     type:     "button"
+    icon:     "file-directory"
+    callback: "project-viewer:togglePanel"
+    tooltip:  "Project Viewer: TogglePanel"
+  }
+  { type: "spacer" }
+  {
+    type:     "button"
     iconset:  "fa"
     icon:     "magic"
     callback: "atom-beautify:beautify-editor"
-    tooltip:  "Atom Beautify: Beautify Editor ⌃⌥X"
+    tooltip:  "Atom Beautify: Beautify Editor"
   }
   {
     type:     "button"
     icon:     "markdown"
     callback: "markdown-preview:toggle"
-    tooltip:  "Markdown: Toggle ⌃⇧M"
+    tooltip:  "Markdown: Toggle"
     disable:  "!markdown"
   }
   { type: "spacer" }
@@ -28,7 +35,8 @@
     type:     "button"
     icon:     "ruby-test"
     callback: "ruby-test:test-file"
-    tooltip:  "Ruby Test: Test File ⌃⌘T"
+    tooltip:  "Ruby Test: Test File"
+    disable:  "!ruby"
     style:
       color: "#CAA9FA"
   }
@@ -36,7 +44,8 @@
     type:     "button"
     icon:     "generic-test"
     callback: "ruby-test:test-single"
-    tooltip:  "Ruby Test: Test Single ⌃⌘R"
+    tooltip:  "Ruby Test: Test Single"
+    disable:  "!ruby"
     style:
       color: "#CAA9FA"
   }
@@ -44,7 +53,8 @@
     type:     "button"
     icon:     "sync"
     callback: "ruby-test:test-previous"
-    tooltip:  "Ruby Test: Test Previous ⌃⌘E"
+    tooltip:  "Ruby Test: Test Previous"
+    disable:  "!ruby"
     style:
       color: "#CAA9FA"
   }

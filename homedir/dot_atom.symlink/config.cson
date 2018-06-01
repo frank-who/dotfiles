@@ -86,11 +86,21 @@
       fontFamily: "Knack Nerd Font"
       fontSize: "10"
       theme: "dracula"
+  "project-viewer":
+    disclaimer:
+      v131: false
+    hideHeader: true
+    visibilityActive: false
+    visibilityOption: "Remember state"
   "ruby-test":
+    minitestAllCommand: "bundle exec rails test test"
+    minitestFileCommand: "bundle exec rails test {relative_path}"
+    minitestSingleCommand: "bundle exec rails test {relative_path} -n \"/{regex}/\""
     rspecAllCommand: "bundle exec rspec -f d --tty spec"
     rspecFileCommand: "bundle exec rspec -f d --tty {relative_path}"
     rspecSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
     specFramework: "rspec"
+    testFramework: "minitest"
   "scroll-searcher": {}
   "split-diff":
     hideTreeView: true
@@ -106,7 +116,6 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
-    squashDirectoryNames: true
   "tree-view-autoresize":
     maximumWidth: 500
     padding: 10
