@@ -5,6 +5,14 @@
 [
   {
     type:     "button"
+    iconset:  "mdi"
+    icon:     "file-tree"
+    callback: "tree-view:toggle"
+    tooltip:  "Toggle Tree"
+  }
+  { type: "spacer" }
+  {
+    type:     "button"
     icon:     "octoface"
     callback: "github:toggle-git-tab"
     tooltip:  "GitHub: Toggle Git Tab"

@@ -16,6 +16,7 @@
     disabledPackages: [
       "metrics"
       "preview"
+      "linter"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
@@ -51,7 +52,8 @@
     init: false
   "linter-rubocop":
     disableWhenNoConfigFile: true
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 69
   "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
@@ -104,6 +106,10 @@
   "scroll-searcher": {}
   "split-diff":
     hideTreeView: true
+  tablr:
+    csvEditor:
+      columnDelimiter: ";"
+      header: true
   tabs:
     usePreviewTabs: true
   "tool-bar":

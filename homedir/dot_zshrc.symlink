@@ -22,3 +22,6 @@ autoload -U compinit
 compinit
 
 unset config_files
+
+# added by travis gem
+[ -f /Users/frank/.travis/travis.sh ] && source /Users/frank/.travis/travis.sh

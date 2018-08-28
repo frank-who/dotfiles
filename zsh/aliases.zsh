@@ -41,6 +41,7 @@ gcmw()  { git commit -m "wip: $*"; }      # wip
 # Ruby / Rails
 alias be='bundle exec'
 alias migrate='rake db:migrate db:test:clone'
+alias opencov='open converage/index.html'
 alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
 alias rc='rails c'
@@ -50,6 +51,8 @@ alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
 alias tlf='tail -f'
 alias tlfd='tail -f log/development.log'
+alias tlfp='tail -f log/production.log'
+alias tlft='tail -f log/test.log'
 
 # OSX
 alias flushdnscache='dscacheutil -flushcache'

@@ -1,6 +1,6 @@
 [user]
 	name = Frank
-	email = franks921@users.noreply.github.com
+	email = frank@6ix.io
 
 [core]
   autocrlf     = input
@@ -22,7 +22,7 @@
   custom = format:%C(red)%h%Creset %C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s %C(bold green)(%cr)
 
 [push]
-  default = current
+	default = current
 
 [help]
   autocorrect = 1
@@ -36,3 +36,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	default = current
