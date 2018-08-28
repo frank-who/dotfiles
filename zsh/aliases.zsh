@@ -41,7 +41,7 @@ gcmw()  { git commit -m "wip: $*"; }      # wip
 # Ruby / Rails
 alias be='bundle exec'
 alias migrate='rake db:migrate db:test:clone'
-alias opencov='open converage/index.html'
+alias opencov='open coverage/index.html'
 alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
 alias rc='rails c'
