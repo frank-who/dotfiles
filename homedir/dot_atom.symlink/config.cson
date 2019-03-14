@@ -13,10 +13,36 @@
     uppercaseColorValues: true
   core:
     closeDeletedFileTabs: true
+    customFileTypes:
+      "source.ruby": [
+        "arb"
+        "axslsx"
+      ]
+      "text.md": [
+        "lsg"
+      ]
+      "text.slim": [
+        "inky-slim"
+      ]
     disabledPackages: [
       "metrics"
       "preview"
       "linter"
+    ]
+    ignoredNames: [
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      ".pioenvs"
+      ".piolibdeps"
+      ".clang_complete"
+      ".gcc-flags.json"
+    ]
+    packagesWithKeymapsDisabled: [
+      "platformio-ide-terminal"
     ]
     projectHome: "~/Code"
     telemetryConsent: "no"
@@ -25,20 +51,17 @@
       "dracula-syntax"
     ]
     titleBar: "custom-inset"
+    useTreeSitterParsers: false
   editor:
     autoIndentOnPaste: false
-    fontFamily: "Roboto Mono"
-    fontSize: 12
+    fontFamily: "Hack"
+    fontSize: 11
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
     userId: "df0bbee6-046c-1b58-c77a-ecce2568a8c3"
   "file-icons":
     onChanges: true
-  "file-types":
-    arb: "source.ruby"
-    axslsx: "source.ruby"
-    lsg: "text.md"
   "flex-tool-bar": {}
   linter:
     disabledProviders: [
@@ -53,7 +76,7 @@
   "linter-rubocop":
     disableWhenNoConfigFile: true
   "linter-ui-default":
-    panelHeight: 69
+    useBusySignal: false
   "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
@@ -85,8 +108,8 @@
     style:
       animationSpeed: 0
       defaultPanelHeight: "30%"
-      fontFamily: "Knack Nerd Font"
-      fontSize: "10"
+      fontFamily: "RobotoMono Nerd Font"
+      fontSize: "9"
       theme: "dracula"
   "project-viewer":
     disclaimer:
@@ -95,6 +118,8 @@
     visibilityActive: false
     visibilityOption: "Remember state"
   "ruby-test":
+    cucumberFileCommand: "bundle exec rspec -f d --tty {relative_path}"
+    cucumberSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
     minitestAllCommand: "bundle exec rails test test"
     minitestFileCommand: "bundle exec rails test {relative_path}"
     minitestSingleCommand: "bundle exec rails test {relative_path} -n \"/{regex}/\""
@@ -122,6 +147,7 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
+    hideIgnoredNames: true
   "tree-view-autoresize":
     maximumWidth: 500
     padding: 10

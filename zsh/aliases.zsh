@@ -20,6 +20,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit -m'
+alias gcnm='git commit -n -m'
 alias gco='git checkout'
 alias gdf='git diff --color | diff-so-fancy'
 alias gl='git lg'
@@ -37,6 +38,7 @@ gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
 gcmrl() { git commit -m "release: $*"; }  # release
 gcmrf() { git commit -m "refactor: $*"; } # refactor
 gcmw()  { git commit -m "wip: $*"; }      # wip
+gcms()  { git commit -m "stash: $(date +%Y-%m-%d--%H:%M)"; } #stash
 
 # Ruby / Rails
 alias be='bundle exec'
@@ -44,9 +46,7 @@ alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
-alias rc='rails c'
-alias rg='rails g'
-alias rs='bundle exec rails s -b 0.0.0.0'
+alias rce="EDITOR='atom --wait' rails credentials:edit"
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
 alias tlf='tail -f'
@@ -63,6 +63,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias bb='brew bundle'
 alias e='atom .'
 alias ctags="`brew --prefix`/bin/ctags"
+alias cca="codeclimate analyze"
 
 # Make sudo understand aliases
 alias sudo='sudo '

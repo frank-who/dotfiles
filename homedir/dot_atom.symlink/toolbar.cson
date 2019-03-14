@@ -13,21 +13,8 @@
   { type: "spacer" }
   {
     type:     "button"
-    icon:     "octoface"
-    callback: "github:toggle-git-tab"
-    tooltip:  "GitHub: Toggle Git Tab"
-  }
-  {
-    type:     "button"
-    icon:     "file-directory"
-    callback: "project-viewer:togglePanel"
-    tooltip:  "Project Viewer: TogglePanel"
-  }
-  { type: "spacer" }
-  {
-    type:     "button"
-    iconset:  "fa"
-    icon:     "magic"
+    iconset:  "mdi"
+    icon:     "auto-fix"
     callback: "atom-beautify:beautify-editor"
     tooltip:  "Atom Beautify: Beautify Editor"
   }
@@ -44,39 +31,46 @@
     icon:     "ruby-test"
     callback: "ruby-test:test-file"
     tooltip:  "Ruby Test: Test File"
-    disable:  "!ruby"
     style:
-      color: "#CAA9FA"
+      color: "#FF6D67"
   }
   {
     type:     "button"
     icon:     "generic-test"
     callback: "ruby-test:test-single"
     tooltip:  "Ruby Test: Test Single"
-    disable:  "!ruby"
     style:
-      color: "#CAA9FA"
+      color: "#FF6D67"
   }
   {
     type:     "button"
     icon:     "sync"
     callback: "ruby-test:test-previous"
     tooltip:  "Ruby Test: Test Previous"
+    style:
+      color: "#FF6D67"
+  }
+  {
+    type:     "button"
+    iconset:  "mdi"
+    icon:     "file-compare"
+    callback: "ruby-test-switcher:switch"
+    tooltip:  "Ruby Test Switch"
     disable:  "!ruby"
     style:
-      color: "#CAA9FA"
+      color: "#FF6D67"
   }
   { type: "spacer" }
   {
     type:    "url"
     icon:    "file"
-    url:     "https://foundation.zurb.com/sites/docs"
+    url:     "https://foundation.zurb.com/sites/docs/"
     tooltip: "Foundation Documentation"
   }
   {
     type:    "url"
     icon:    "file-code"
-    url:     "https://github.com/zurb/foundation-rails/blob/master/vendor/assets/scss/settings/_settings.scss"
+    url:     "https://github.com/zurb/foundation-sites/blob/master/scss/settings/_settings.scss"
     tooltip: "Foundation Defaults"
   }
 ]

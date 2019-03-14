@@ -50,6 +50,7 @@ module Dotfiles
           pigments
           preview
           rails-i18n-autocomplete
+          ruby-test-switcher
           sort-lines
           split-diff
           test-ruby

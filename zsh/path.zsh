@@ -5,5 +5,5 @@ $HOME/.pyenv:\
 $HOME/.pyenv/bin:\
 $HOME/.rbenv/bin:\
 $HOME/.rbenv/shims:\
-$HOME/.ndenv/bin:\
+$HOME/.nodenv/bin:\
 $PATH"
