@@ -30,15 +30,16 @@ alias gs='git status -sb'
 alias gst='git stash'
 alias gstp='git stash pop'
 
-gcma()  { git commit -m "add: $*"; }      # add
-gcmr()  { git commit -m "remove: $*"; }   # remove
-gcmc()  { git commit -m "chore: $*"; }    # chore
-gcmf()  { git commit -m "fix: $*"; }      # fix
-gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
-gcmrl() { git commit -m "release: $*"; }  # release
-gcmrf() { git commit -m "refactor: $*"; } # refactor
-gcmw()  { git commit -m "wip: $*"; }      # wip
-gcms()  { git commit -m "stash: $(date +%Y-%m-%d--%H:%M)"; } #stash
+gcma()   { git commit -m "add: $*"; }      # add
+gcmr()   { git commit -m "remove: $*"; }   # remove
+gcmc()   { git commit -m "chore: $*"; }    # chore
+gcmf()   { git commit -m "fix: $*"; }      # fix
+gcmhf()  { git commit -m "hotfix: $*"; }   # hotfix
+gcmrl()  { git commit -m "release: $*"; }  # release
+gcmrf()  { git commit -m "refactor: $*"; } # refactor
+gcmw()   { git commit -m "wip: $*"; }      # wip
+gcms()   { git commit -m "stash: $(date +%Y-%m-%d--%H:%M)"; } #stash
+gcnms()  { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M)"; } #stash
 
 # Ruby / Rails
 alias be='bundle exec'
