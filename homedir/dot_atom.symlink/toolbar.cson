@@ -13,6 +13,19 @@
   { type: "spacer" }
   {
     type:     "button"
+    icon:     "fold"
+    callback: "editor:fold-all"
+    tooltip:  "Fold"
+  }
+  {
+    type:     "button"
+    icon:     "unfold"
+    callback: "editor:unfold-all"
+    tooltip:  "Unfold"
+  }
+  { type: "spacer" }
+  {
+    type:     "button"
     iconset:  "mdi"
     icon:     "auto-fix"
     callback: "atom-beautify:beautify-editor"

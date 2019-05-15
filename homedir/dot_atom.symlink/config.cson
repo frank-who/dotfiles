@@ -55,7 +55,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "Hack"
-    fontSize: 11
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
@@ -155,6 +155,9 @@
     showOnStartup: false
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
+".js.source":
+  "toggle-quotes":
+    quoteCharacters: "\"'`"
 ".slim.text":
   whitespace:
     removeTrailingWhitespace: true
