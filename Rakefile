@@ -55,4 +55,8 @@ namespace :dotfiles do
     Dotfiles::Atom.update_icon
   end
 
+  task :update_code_icon do
+    Dotfiles::Code.update_icon
+  end
+
 end

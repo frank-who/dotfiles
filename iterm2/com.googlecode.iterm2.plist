@@ -696,23 +696,23 @@
 		</array>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>637 255 838 225 0 0 2560 1418 </string>
+	<string>400 178 838 188 0 0 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>137 419 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame ProfilesPanel</key>
-	<string>510 438 735 382 0 0 1680 1028 </string>
+	<string>985 702 735 382 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>640 674 400 129 0 0 1680 1028 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 768 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>220 146 606 469 0 0 1680 1028 </string>
+	<string>346 177 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>801 547 770 429 0 0 2560 1417 </string>
+	<string>510 374 918 495 0 0 1920 1057 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>946 193 592 457 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 2560 1417 0 0 2560 1417 </string>
+	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1004 522 933 672 0 0 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_FE39B2AE-6D95-4DAC-84A0-18B1DACF4D50</key>
@@ -1334,7 +1334,7 @@
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
-			<string>juno.local</string>
+			<string>akira.local</string>
 			<key>Non Ascii Font</key>
 			<string>RobotoMonoNerdFontC-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -3869,7 +3869,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-25T09:17:38Z</date>
+	<date>2019-06-04T17:09:00Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
