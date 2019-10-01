@@ -30,6 +30,7 @@ alias gps='git push -u origin HEAD'
 alias gs='git status -sb'
 alias gst='git stash'
 alias gstp='git stash pop'
+alias grmerged='git branch --merged | egrep -v "(^\*|master|develop|uat)" | xargs git branch -d'
 
 gcma()   { git commit -m "add: $*"; }      # add
 gcmr()   { git commit -m "remove: $*"; }   # remove
@@ -44,11 +45,13 @@ gcnms()  { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M)"; } #stash
 
 # Ruby / Rails
 alias be='bundle exec'
+alias gitrspec='be rspec `git ls-files --modified --others spec/**/*_spec.rb`'
 alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
 alias rce="EDITOR='atom --wait' rails credentials:edit"
+alias rr='rails runner'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
 alias tlf='tail -f'
