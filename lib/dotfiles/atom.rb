@@ -33,6 +33,7 @@ module Dotfiles
 
         list = %w/
           aligner
+          aligner-css
           aligner-javascript
           aligner-ruby
           aligner-scss
@@ -50,6 +51,9 @@ module Dotfiles
           pigments
           preview
           rails-i18n-autocomplete
+          remember-folds
+          ruby-block
+          ruby-test
           ruby-test-switcher
           sort-lines
           split-diff
