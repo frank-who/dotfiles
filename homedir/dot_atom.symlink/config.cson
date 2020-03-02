@@ -1,16 +1,4 @@
 "*":
-  "atom-beautify":
-    general:
-      _analyticsUserId: "5a3d65ce-d922-4525-8e69-9442e82a3b32"
-  "atom-clock":
-    dateFormat: " H:mm"
-    showClockIcon: true
-  "atom-package-deps":
-    ignored: []
-  "color-picker":
-    abbreviateValues: true
-    preferredFormat: "HEX"
-    uppercaseColorValues: true
   core:
     closeDeletedFileTabs: true
     customFileTypes:
@@ -26,8 +14,6 @@
       ]
     disabledPackages: [
       "metrics"
-      "preview"
-      "linter"
     ]
     ignoredNames: [
       ".hg"
@@ -44,13 +30,11 @@
     packagesWithKeymapsDisabled: [
       "platformio-ide-terminal"
     ]
-    projectHome: "~/Code"
     telemetryConsent: "no"
     themes: [
       "dracula-ui"
       "dracula-syntax"
     ]
-    titleBar: "custom-inset"
     useTreeSitterParsers: false
   editor:
     autoIndentOnPaste: false
@@ -59,25 +43,10 @@
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
-    userId: "df0bbee6-046c-1b58-c77a-ecce2568a8c3"
+    userId: "b90920dd-3963-4980-bcb0-8de5e45adc36"
   "file-icons":
     onChanges: true
   "flex-tool-bar": {}
-  linter:
-    disabledProviders: [
-      "Code Climate"
-    ]
-    lintOnOpen: false
-    lintPreviewTabs: false
-  "linter-codeclimate":
-    disableTimeout: true
-    executablePath: "/usr/local/bin/codeclimate"
-    init: false
-  "linter-rubocop":
-    disableWhenNoConfigFile: true
-  "linter-ui-default":
-    useBusySignal: false
-  "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
     extendAutocompleteToVariables: true
@@ -111,12 +80,6 @@
       fontFamily: "RobotoMono Nerd Font"
       fontSize: "9"
       theme: "dracula"
-  "project-viewer":
-    disclaimer:
-      v131: false
-    hideHeader: true
-    visibilityActive: false
-    visibilityOption: "Remember state"
   "ruby-test":
     cucumberFileCommand: "bundle exec rspec -f d --tty {relative_path}"
     cucumberSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
@@ -128,13 +91,8 @@
     rspecSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
     specFramework: "rspec"
     testFramework: "minitest"
-  "scroll-searcher": {}
   "split-diff":
     hideTreeView: true
-  tablr:
-    csvEditor:
-      columnDelimiter: ";"
-      header: true
   tabs:
     usePreviewTabs: true
   "tool-bar":

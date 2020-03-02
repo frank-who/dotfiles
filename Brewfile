@@ -1,12 +1,9 @@
-cask_args appdir: '/Applications'
-
 tap 'homebrew/bundle'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
 
 brew 'ctags'
 brew 'diff-so-fancy'
 brew 'git'
+brew 'github/gh/gh'
 brew 'graphviz'
 brew 'imagemagick'
 brew 'overmind'
@@ -16,7 +13,3 @@ brew 'redis'
 brew 'terminal-notifier'
 brew 'tmux'
 brew 'wget'
-
-cask 'atom'
-cask 'font-roboto-mono'
-cask 'font-roboto'

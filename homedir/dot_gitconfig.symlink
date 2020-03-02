@@ -1,6 +1,6 @@
 [user]
-	name = Frank
-	email = frank@6ix.io
+  name  = Frank
+  email = frank@6ix.io
 
 [core]
   autocrlf     = input
@@ -10,7 +10,7 @@
   whitespace   = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [pager]
-	diff = false
+  diff = false
 
 [color]
   branch = auto
@@ -22,25 +22,25 @@
   custom = format:%C(red)%h%Creset %C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s %C(bold green)(%cr)
 
 [push]
-	default = current
+  default = current
 
 [help]
   autocorrect = 1
 
 [alias]
-  lg = log --stat --pretty=custom --abbrev-commit
+  lg    = log --stat --pretty=custom --abbrev-commit
   prune = fetch --prune
-  undo = reset --soft HEAD^
+  undo  = reset --soft HEAD^
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean    = git-lfs clean -- %f
+  smudge   = git-lfs smudge -- %f
+  process  = git-lfs filter-process
+  required = true
 
 [pull]
-	default = current
+  default = current
 
 [diff "enc"]
-  textconv = rails encrypted:show
+  textconv      = rails encrypted:show
   cachetextconv = false

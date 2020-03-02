@@ -1,5 +1,0 @@
-gpr() {
-  repo=`git config remote.origin.url | cut -f2 -d. | tr ':' /`
-  branch=`git symbolic-ref HEAD --short`
-  open "https://github.$repo/compare/develop...$branch?expand=1"
-}

@@ -23,7 +23,9 @@
     callback: "editor:unfold-all"
     tooltip:  "Unfold"
   }
-  { type: "spacer" }
+  {
+    type: "spacer"
+  }
   {
     type:     "button"
     iconset:  "mdi"
@@ -36,44 +38,55 @@
     icon:     "markdown"
     callback: "markdown-preview:toggle"
     tooltip:  "Markdown: Toggle"
-    disable:  "!markdown"
+    show:     "markdown"
   }
-  { type: "spacer" }
+  {
+    type: "spacer"
+    show: "ruby"
+  }
   {
     type:     "button"
-    icon:     "ruby-test"
+    iconset:  "mdi"
+    icon:     "file-check-outline"
     callback: "ruby-test:test-file"
     tooltip:  "Ruby Test: Test File"
-    style:
-      color: "#FF6D67"
-  }
-  {
-    type:     "button"
-    icon:     "generic-test"
-    callback: "ruby-test:test-single"
-    tooltip:  "Ruby Test: Test Single"
-    style:
-      color: "#FF6D67"
-  }
-  {
-    type:     "button"
-    icon:     "sync"
-    callback: "ruby-test:test-previous"
-    tooltip:  "Ruby Test: Test Previous"
+    show:     "ruby"
     style:
       color: "#FF6D67"
   }
   {
     type:     "button"
     iconset:  "mdi"
-    icon:     "file-compare"
-    callback: "ruby-test-switcher:switch"
-    tooltip:  "Ruby Test Switch"
-    disable:  "!ruby"
+    icon:     "file-replace-outline"
+    callback: "ruby-test:test-single"
+    tooltip:  "Ruby Test: Test Single"
+    show:     "ruby"
     style:
       color: "#FF6D67"
   }
-  { type: "spacer" }
+  {
+    type:     "button"
+    iconset:  "mdi"
+    icon:     "sync"
+    callback: "ruby-test:test-previous"
+    tooltip:  "Ruby Test: Test Previous"
+    show:     "ruby"
+    style:
+      color: "#FF6D67"
+  }
+  {
+    type:     "button"
+    iconset:  "mdi"
+    icon:     "file-swap-outline"
+    callback: "ruby-test-switcher:switch"
+    tooltip:  "Ruby Test Switch"
+    show:     "ruby"
+    style:
+      color: "#FF6D67"
+  }
+  {
+    type: "spacer"
+  }
   {
     type:    "url"
     icon:    "file"

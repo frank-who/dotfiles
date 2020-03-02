@@ -38,19 +38,12 @@ module Dotfiles
           aligner-ruby
           aligner-scss
           atom-beautify
-          atom-clock
-          atom-ctags
-          color-picker
           dracula-syntax
           dracula-ui
           file-icons
           flex-tool-bar
           language-slim
-          linter
-          linter-codeclimate
           pigments
-          preview
-          rails-i18n-autocomplete
           remember-folds
           ruby-block
           ruby-test

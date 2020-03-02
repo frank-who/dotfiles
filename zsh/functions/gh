@@ -1,5 +1,0 @@
-gh() {
-  repo=`git config remote.origin.url | cut -f2 -d. | tr ':' /`
-  branch="$(git symbolic-ref HEAD --short)"
-  open "https://github.$repo/tree/$branch"
-}
