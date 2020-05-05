@@ -17,6 +17,10 @@
         # ==== Methods
     """
 
+  'aggregate_failures (Block)':
+    'prefix': 'agg'
+    'body': 'aggregate_failures do\n  $0\nend'
+
 '.source.js':
   'Stimulus Controller Structure':
     'prefix': 'comment.stimulus_controller_structure'

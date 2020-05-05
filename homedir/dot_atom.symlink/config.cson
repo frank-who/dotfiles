@@ -1,6 +1,7 @@
 "*":
   core:
     closeDeletedFileTabs: true
+    colorProfile: "srgb"
     customFileTypes:
       "source.ruby": [
         "arb"
