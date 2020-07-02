@@ -1,6 +1,20 @@
 # https://github.com/bevry/cson#what-is-cson
 
+'.text.slim':
+  'Frozen string literal':
+    'prefix': 'frozen_string_literal'
+    'body': """
+    -# frozen_string_literal: true
+    """
+
 '.source.ruby':
+  'Frozen string literal':
+    'prefix': 'frozen_string_literal'
+    'body': """
+    # frozen_string_literal: true
+
+    """
+
   'Model Structure':
     'prefix': 'comment.model_structure'
     'body': """
@@ -22,7 +36,7 @@
     'body': 'aggregate_failures do\n  $0\nend'
 
 '.source.js':
-  'Stimulus Controller Structure':
+  'Stimulus Controller Comment Structure':
     'prefix': 'comment.stimulus_controller_structure'
     'body': """
         // ==== Controllers
@@ -36,4 +50,32 @@
         // ==== Private
 
         // ==== Channels
+    """
+
+  'Stimulus Controller Boilerplate':
+    'prefix': 'boilerplate.stimulus_controller_structure'
+    'body': """
+      import ApplicationController from 'support/application_controller'
+
+      export default class extends ApplicationController {
+
+        static targets = []
+
+        connect() {}
+
+        initialize() {}
+
+        // ==== Controllers
+
+        // ==== Actions
+
+        // ==== Getters
+
+        // ==== Setters
+
+        // ==== Private
+
+        // ==== Channels
+
+      }
     """

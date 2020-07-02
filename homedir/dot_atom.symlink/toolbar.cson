@@ -10,18 +10,11 @@
     callback: "tree-view:toggle"
     tooltip:  "Toggle Tree"
   }
-  { type: "spacer" }
   {
     type:     "button"
     icon:     "fold"
-    callback: "editor:fold-all"
+    callback: "tree-view:collapse-all"
     tooltip:  "Fold"
-  }
-  {
-    type:     "button"
-    icon:     "unfold"
-    callback: "editor:unfold-all"
-    tooltip:  "Unfold"
   }
   {
     type: "spacer"

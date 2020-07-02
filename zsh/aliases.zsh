@@ -30,7 +30,7 @@ alias gps='git push -u origin HEAD'
 alias gs='git status -sb'
 alias gst='git stash'
 alias gstp='git stash pop'
-alias grmerged='git branch --merged | egrep -v "(^\*|master|develop|uat)" | xargs git branch -d'
+alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|uat)\s*$)" | command xargs -n 1 git branch -d'
 
 gcma()   { git commit -m "add: $*"; }      # add
 gcmr()   { git commit -m "remove: $*"; }   # remove
@@ -69,6 +69,7 @@ alias bb='brew bundle'
 alias e='atom .'
 alias ctags="`brew --prefix`/bin/ctags"
 alias cca="codeclimate analyze"
+alias aliases='atom ~/dotfiles/zsh/aliases.zsh'
 
 # Make sudo understand aliases
 alias sudo='sudo '

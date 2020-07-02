@@ -1,4 +1,6 @@
 "*":
+  "base16-syntax":
+    scheme: "OneDark"
   core:
     closeDeletedFileTabs: true
     colorProfile: "srgb"
@@ -15,6 +17,7 @@
       ]
     disabledPackages: [
       "metrics"
+      "spell-check"
     ]
     ignoredNames: [
       ".hg"
@@ -33,13 +36,12 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "dracula-ui"
-      "dracula-syntax"
+      "seti-ui"
+      "seti-syntax"
     ]
-    useTreeSitterParsers: false
   editor:
     autoIndentOnPaste: false
-    fontFamily: "Hack"
+    fontFamily: "Fira Code"
     fontSize: 12
     invisibles: {}
     showIndentGuide: true
@@ -48,6 +50,7 @@
   "file-icons":
     onChanges: true
   "flex-tool-bar": {}
+  "one-dark-ui": {}
   pigments:
     extendAutocompleteToColorValue: true
     extendAutocompleteToVariables: true
@@ -92,6 +95,8 @@
     rspecSingleCommand: "bundle exec rspec -f d --tty {relative_path}:{line_number}"
     specFramework: "rspec"
     testFramework: "minitest"
+  "seti-syntax":
+    themeColor: "Red"
   "split-diff":
     hideTreeView: true
   tabs:
