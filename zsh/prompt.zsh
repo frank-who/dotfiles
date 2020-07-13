@@ -93,7 +93,7 @@ parse_git_state() {
 
   local GIT_STATE=''
 
-  local SHA="$(git rev-parse --short HEAD 2> /dev/null)"
+  local SHA="$(git rev-parse --short=7 HEAD 2> /dev/null)"
   if [ -n "$SHA" ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_COMMIT//SHA/$SHA}
   fi

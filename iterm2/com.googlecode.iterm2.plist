@@ -708,7 +708,7 @@
 	<key>NSWindow Frame ProfilesPanel</key>
 	<string>985 702 735 382 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>614 763 400 129 0 0 1920 1057 </string>
+	<string>517 738 400 129 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 498 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
@@ -1388,11 +1388,11 @@
 			<key>Semantic History</key>
 			<dict>
 				<key>action</key>
-				<string>best editor</string>
+				<string>command</string>
 				<key>editor</key>
 				<string>com.sublimetext.3</string>
 				<key>text</key>
-				<string></string>
+				<string>/usr/local/bin/atom \1:\2</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2435,10 +2435,16 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.3.11beta1</string>
+		<string>3.3.10beta4</string>
+		<string>3.3.10beta2</string>
 		<string>3.3.5beta2</string>
 		<string>3.3.8beta5</string>
 		<string>3.3.7beta1</string>
 		<string>3.3.7beta3</string>
+		<string>3.3.8beta1</string>
+		<string>3.3.12beta1</string>
+		<string>3.3.12beta3</string>
 		<string>3.3.3beta2</string>
 		<string>3.3.0beta16</string>
 		<string>3.3.8beta4</string>
@@ -2446,7 +2452,9 @@
 		<string>3.3.7beta2</string>
 		<string>3.3.4beta1</string>
 		<string>3.2.1beta6</string>
-		<string>3.3.8beta1</string>
+		<string>3.3.9beta1</string>
+		<string>3.3.10beta1</string>
+		<string>3.3.10beta3</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -2466,7 +2474,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1920, 1080}}</string>
 		<key>topLeft</key>
-		<string>{224, 755}</string>
+		<string>{295, 859}</string>
 	</dict>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
@@ -2475,7 +2483,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>465512895.494533</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>43</integer>
+	<integer>68</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3346,7 +3354,9 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-04T18:52:17Z</date>
+	<date>2020-07-12T09:03:11Z</date>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>3667091193</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3424,7 +3434,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8beta5</string>
+	<string>3.3.12beta3</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
