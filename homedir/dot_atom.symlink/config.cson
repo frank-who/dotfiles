@@ -1,8 +1,6 @@
 "*":
   "aligner-ruby":
     ",-rightSpace": false
-    ":-alignment": "left"
-    ":-rightSpace": false
   "base16-syntax":
     scheme: "OneDark"
   core:

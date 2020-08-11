@@ -640,6 +640,8 @@
 	<string>/Applications</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
+	<key>NSOverlayScrollersFallBackForAccessoryViews</key>
+	<false/>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -720,7 +722,7 @@
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1920 1057 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 3 1917 1054 0 0 1920 1057 </string>
+	<string>0 610 490 417 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_FE39B2AE-6D95-4DAC-84A0-18B1DACF4D50</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_FE39B2AE-6D95-4DAC-84A0-18B1DACF4D50_selection</key>
@@ -1392,7 +1394,7 @@
 				<key>editor</key>
 				<string>com.sublimetext.3</string>
 				<key>text</key>
-				<string>/usr/local/bin/atom \1:\2</string>
+				<string>/usr/local/bin/code \1:\2</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2435,6 +2437,8 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.3.12beta3</string>
+		<string>3.3.12beta1</string>
 		<string>3.3.11beta1</string>
 		<string>3.3.10beta4</string>
 		<string>3.3.10beta2</string>
@@ -2443,8 +2447,6 @@
 		<string>3.3.7beta1</string>
 		<string>3.3.7beta3</string>
 		<string>3.3.8beta1</string>
-		<string>3.3.12beta1</string>
-		<string>3.3.12beta3</string>
 		<string>3.3.3beta2</string>
 		<string>3.3.0beta16</string>
 		<string>3.3.8beta4</string>
@@ -2455,6 +2457,7 @@
 		<string>3.3.9beta1</string>
 		<string>3.3.10beta1</string>
 		<string>3.3.10beta3</string>
+		<string>3.4.0beta2</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -2474,16 +2477,20 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1920, 1080}}</string>
 		<key>topLeft</key>
-		<string>{295, 859}</string>
+		<string>{294, 859}</string>
 	</dict>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>1FDDD744-C329-4E72-A6D6-6B2EA7CE25CD</string>
+	<key>NoSyncLastOSVersion</key>
+	<string>Version 10.15.6 (Build 19G73)</string>
 	<key>NoSyncLastTipTime</key>
 	<real>465512895.494533</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>68</integer>
+	<integer>75</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2601,6 +2608,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>selectionLength</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -2612,6 +2627,14 @@
 				<string>triggerName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<false/>
+				<key>name</key>
+				<string>parentSession</string>
+				<key>nonterminalContext</key>
+				<integer>1</integer>
 			</dict>
 			<dict>
 				<key>isTerminal</key>
@@ -2730,6 +2753,14 @@
 				<true/>
 				<key>name</key>
 				<string>tmuxStatusLeft</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>selection</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -3208,6 +3239,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>NoSyncRestoreWindowsCount</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>465599972.84640998</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -3350,15 +3383,15 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing_new.xml?shard=24</string>
+	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=24</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-07-12T09:03:11Z</date>
+	<date>2020-08-10T12:08:11Z</date>
 	<key>SUUpdateGroupIdentifier</key>
-	<integer>3667091193</integer>
+	<integer>1019985139</integer>
 	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
+	<true/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -3434,7 +3467,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.12beta3</string>
+	<string>3.4.0beta2</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

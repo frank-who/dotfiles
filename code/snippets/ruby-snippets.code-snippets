@@ -1,0 +1,84 @@
+{
+	"frozen_string_literal (rb)": {
+		"prefix": "frozen_string_literal",
+		"scope": "ruby",
+		"body": [
+			"# frozen_string_literal: true",
+			""
+		]
+	},
+
+	"frozen_string_literal (slim)": {
+		"prefix": "frozen_string_literal",
+		"scope": "slim",
+		"body": [
+			"-# frozen_string_literal: true"
+		]
+	},
+
+	"Model structure": {
+		"prefix": "comment.model_structure",
+		"scope": "ruby",
+		"body": [
+			"# ==== Configuration",
+      "",
+			"# ==== Associations",
+      "",
+			"# ==== Scopes",
+      "",
+			"# ==== Callbacks",
+      "",
+			"# ==== Validations",
+      "",
+			"# ==== Methods"
+		]
+	},
+
+	"Stimulus controller structure": {
+		"prefix": "comment.stimulus_controller_structure",
+		"scope": "javascript",
+		"body": [
+			"// ==== Controllers",
+			"",
+			"// ==== Actions",
+			"",
+			"// ==== Getters",
+			"",
+			"// ==== Setters",
+			"",
+			"// ==== Private",
+			"",
+			"// ==== Channels"
+		]
+	},
+
+	"Stimulus controller boilerplate": {
+		"prefix": "boilerplate.stimulus_controller",
+		"scope": "javascript",
+		"body": [
+			"import ApplicationController from 'support/application_controller'",
+      "",
+			"export default class extends ApplicationController {",
+      "",
+			" static targets = []",
+      "",
+			" initialize() {}",
+      "",
+			" connect() {}",
+      "",
+			" // ==== Controllers",
+      "",
+			" // ==== Actions",
+      "",
+			" // ==== Getters",
+      "",
+			" // ==== Setters",
+      "",
+			" // ==== Private",
+      "",
+			" // ==== Channels",
+      "",
+			"}"
+		]
+	}
+}

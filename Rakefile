@@ -12,7 +12,7 @@ namespace :dotfiles do
     newline
     system('sudo -v')
 
-    tasks = %w/zsh python ruby symlinks macos_defaults config_files homebrew atom/
+    tasks = %w/zsh python ruby symlinks macos_defaults config_files homebrew atom code/
     tasks.each do |t|
       Rake::Task["dotfiles:#{t}"].invoke
       newline
@@ -49,6 +49,10 @@ namespace :dotfiles do
 
   task :atom do
     Dotfiles::Atom.run
+  end
+
+  task :code do
+    Dotfiles::Code.run
   end
 
   task :update_atom_icon do

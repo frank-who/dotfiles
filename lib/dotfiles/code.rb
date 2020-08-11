@@ -9,7 +9,7 @@ module Dotfiles
       FileUtils.cp(new_icon, app_icon)
 
       system('killall Dock')
-      system('touch /Applications/Visual Studio Code.app')
+      system('touch /Applications/Visual\ Studio\ Code.app')
 
       message('Code icon'.green, indent: 2)
     end

@@ -50,7 +50,7 @@ alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
-alias rce="EDITOR='atom --wait' rails credentials:edit"
+alias rce="EDITOR='code --wait' rails credentials:edit"
 alias rr='rails runner'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'

@@ -1,0 +1,60 @@
+{
+    "alignment.operatorPadding": "right",
+    "atomKeymap.promptV3Features": true,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
+    "breadcrumbs.enabled": true,
+    "colorize.colorized_variables": [ "CSS", "SASS" ],
+    "editor.colorDecorators": false,
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 3,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.formatOnPaste": false,
+    "editor.matchBrackets": "never",
+    "editor.minimap.enabled": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.occurrencesHighlight": false,
+    "editor.rulers": [ 80 ],
+    "editor.selectionHighlight": false,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "off",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "oneDarkPro.editorTheme": "onedarkPro",
+    "terminal.external.linuxExec": "xterm-256color",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "RobotoMono Nerd Font",
+    "terminal.integrated.fontSize": 10,
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "One Dark Pro"
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.iconTheme": "file-icons",
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "newUntitledFile",
+    "alignment.surroundSpace": {
+        "colon": [
+            -1,
+            1
+        ],
+        "assignment": [
+            1,
+            1
+        ],
+        "arrow": [
+            1,
+            1
+        ],
+        "comment": 2
+    },
+    // https://microsoft.github.io/vscode-codicons/dist/codicon.html
+    "shortcuts.buttons": [
+        "beaker, extension.runFileSpecs, Run spec file",
+        "file-code, extension.runSpecLine, Run spec line",
+        "references, extension.goToSpec, Toggle spec",
+        "terminal, workbench.action.terminal.toggleTerminal, Toggle terminal"
+    ]
+}
