@@ -30,7 +30,7 @@
     "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
     "window.zoomLevel": 0,
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.tabSizing": "shrink",
     "workbench.iconTheme": "file-icons",
     "workbench.sideBar.location": "left",
