@@ -66,10 +66,11 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # Misc
 alias bb='brew bundle'
-alias e='atom .'
+alias e='code .'
 alias ctags="`brew --prefix`/bin/ctags"
 alias cca="codeclimate analyze"
-alias aliases='atom ~/dotfiles/zsh/aliases.zsh'
+alias ccag="codeclimate analyze `git status --porcelain | sed s/^...//`"
+alias aliases='code ~/dotfiles/zsh/aliases.zsh'
 
 # Make sudo understand aliases
 alias sudo='sudo '

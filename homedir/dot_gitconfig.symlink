@@ -40,6 +40,7 @@
 
 [pull]
   default = current
+	rebase = false
 
 [diff "enc"]
   textconv      = rails encrypted:show

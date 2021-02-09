@@ -712,7 +712,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>517 738 400 129 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 498 620 392 0 0 1920 1057 </string>
+	<string>530 476 620 392 -1680 0 1680 1050 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>346 177 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -720,7 +720,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>946 193 592 457 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1057 0 0 1920 1057 </string>
+	<string>1 1 1678 1024 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 610 490 417 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_FE39B2AE-6D95-4DAC-84A0-18B1DACF4D50</key>
@@ -1392,9 +1392,9 @@
 				<key>action</key>
 				<string>command</string>
 				<key>editor</key>
-				<string>com.sublimetext.3</string>
+				<string>com.microsoft.VSCode</string>
 				<key>text</key>
-				<string>/usr/local/bin/code \1:\2</string>
+				<string>/usr/local/bin/code -g \1:\2</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2458,6 +2458,7 @@
 		<string>3.3.10beta1</string>
 		<string>3.3.10beta3</string>
 		<string>3.4.0beta2</string>
+		<string>3.4.0beta3</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -2475,13 +2476,15 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1920, 1080}}</string>
+		<string>{{-1680, 0}, {1680, 1050}}</string>
 		<key>topLeft</key>
 		<string>{294, 859}</string>
 	</dict>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
+	<key>NoSyncIgnoreSystemWindowRestoration</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>1FDDD744-C329-4E72-A6D6-6B2EA7CE25CD</string>
@@ -2490,7 +2493,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>465512895.494533</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>75</integer>
+	<integer>76</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3387,11 +3390,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-10T12:08:11Z</date>
+	<date>2020-08-17T20:24:08Z</date>
 	<key>SUUpdateGroupIdentifier</key>
 	<integer>1019985139</integer>
 	<key>SUUpdateRelaunchingMarker</key>
-	<true/>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -3467,7 +3470,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.4.0beta2</string>
+	<string>3.4.0beta3</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
