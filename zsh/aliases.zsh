@@ -58,6 +58,9 @@ alias tlf='tail -f'
 alias tlfd='tail -f log/development.log'
 alias tlfp='tail -f log/production.log'
 alias tlft='tail -f log/test.log'
+alias fixsql='rails db:drop db:create db:migrate RAILS_ENV=test && ruby -pi -e "sub(/DEFAULT\ gen_random_uuid\(\)/, \"DEFAULT public.gen_random_uuid()\")" db/structure.sql'
+alias fixhfprimarysql='rails db:drop:primary db:create:primary db:migrate:primary RAILS_ENV=test && ruby -pi -e "sub(/DEFAULT\ gen_random_uuid\(\)/, \"DEFAULT public.gen_random_uuid()\")" db/structure.sql'
+alias fixhfkenasql='rails db:drop:kena db:create:kena db:migrate:kena RAILS_ENV=test && ruby -pi -e "sub(/DEFAULT\ gen_random_uuid\(\)/, \"DEFAULT public.gen_random_uuid()\")" db/kena_structure.sql'
 
 # OSX
 alias flushdnscache='dscacheutil -flushcache'
