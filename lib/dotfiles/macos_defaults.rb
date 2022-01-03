@@ -42,10 +42,34 @@ module Dotfiles
       def self.restart_apps
         newline
         message('Restarting Apps'.bold, indent: 2)
-        %w/Finder Dock Tweetbot SystemUIServer/.each do |app|
+        %w/Finder Dock SystemUIServer/.each do |app|
           system("killall #{app} &> /dev/null")
         end
       end
+
+      # # Adjust toolbar title rollover delay
+      # defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
+      # Expand save panel by default
+      # defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+      # defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+      # Disable smart dashes as they’re annoying when typing code
+      # defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+      # Disable automatic period substitution as it’s annoying when typing code
+      # defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+      # Disable smart quotes as they’re annoying when typing code
+      # defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+      # Require password immediately after sleep or screen saver begins
+      # defaults write com.apple.screensaver askForPassword -int 1
+      # defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+      # Enable subpixel font rendering on non-Apple LCDs
+      # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+      # defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
       def self.grouped_defaults
         {
