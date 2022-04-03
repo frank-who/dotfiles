@@ -14,7 +14,7 @@ module Dotfiles
           message('rbenv'.green, indent: 2)
         else
           message('rbenv'.red, indent: 2)
-          system('git clone git://github.com/rbenv/rbenv.git ~/.rbenv')
+          system('git clone git@github.com:rbenv/rbenv.git ~/.rbenv')
         end
       end
 
@@ -23,7 +23,7 @@ module Dotfiles
           message('ruby-build'.green, indent: 2)
         else
           message('ruby-build'.red, indent: 2)
-          system('git clone git://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build')
+          system('git clone git@github.com:rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build')
         end
       end
 
