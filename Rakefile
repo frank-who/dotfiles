@@ -7,13 +7,11 @@ include Dotfiles
 task install: ['dotfiles:install']
 
 namespace :dotfiles do
-
   task :install do
     newline
     system('sudo -v')
 
-    tasks = %w[zsh ruby symlinks macos_defaults config_files homebrew code]
-    tasks.each do |t|
+    %w[zsh ruby symlinks macos_defaults config_files homebrew code].each do |t|
       Rake::Task["dotfiles:#{t}"].invoke
       newline
     end
