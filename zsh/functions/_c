@@ -1,4 +1,4 @@
 #compdef c
 _files -W $CODE/platform45 -/
-_files -W $CODE/frznk-s -/
+_files -W $CODE/frznk-tank -/
 _files -W $CODE/github.com -/
