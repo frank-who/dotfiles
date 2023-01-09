@@ -30,25 +30,24 @@ alias gps='git push -u origin HEAD'
 alias gs='git status -sb'
 alias gst='git stash'
 alias gstp='git stash pop'
-alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|training)\s*$)" | command xargs -n 1 git branch -d'
+alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|main|develop)\s*$)" | command xargs -n 1 git branch -d'
 
-gcma()   { git commit -m "add: $*"; }      # add
-gcmr()   { git commit -m "remove: $*"; }   # remove
-gcmc()   { git commit -m "chore: $*"; }    # chore
-gcmf()   { git commit -m "fix: $*"; }      # fix
-gcmhf()  { git commit -m "hotfix: $*"; }   # hotfix
-gcmrl()  { git commit -m "release: $*"; }  # release
-gcmrf()  { git commit -m "refactor: $*"; } # refactor
-gcmw()   { git commit -m "wip: $*"; }      # wip
-gcms()   { git commit -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
-gcnms()  { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
+gcma()  { git commit -m "add: $*"; }      # add
+gcmr()  { git commit -m "remove: $*"; }   # remove
+gcmc()  { git commit -m "chore: $*"; }    # chore
+gcmf()  { git commit -m "fix: $*"; }      # fix
+gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
+gcmrl() { git commit -m "release: $*"; }  # release
+gcmrf() { git commit -m "refactor: $*"; } # refactor
+gcmw()  { git commit -m "wip: $*"; }      # wip
+gcms()  { git commit -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
+gcnms() { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
 
 # Ruby / Rails
 alias be='bundle exec'
 alias gitrspec='be rspec `git ls-files --modified --others spec/**/*_spec.rb`'
 alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
-alias powrst='touch ~/.pow/restart.txt'
 alias rake='noglob rake'
 alias rce="EDITOR='code --wait' rails credentials:edit"
 alias rr='rails runner'
@@ -70,7 +69,6 @@ alias e='code .'
 alias cca="codeclimate analyze"
 alias ccag="codeclimate analyze `git status --porcelain | sed s/^...//`"
 alias aliases='code ~/dotfiles/zsh/aliases.zsh'
-alias updatecodeicon='rake -f ~/dotfiles/Rakefile dotfiles:update_code_icon'
 
 # Make sudo understand aliases
 alias sudo='sudo '
