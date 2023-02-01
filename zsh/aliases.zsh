@@ -34,12 +34,11 @@ alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(m
 
 gcma()  { git commit -m "add: $*"; }      # add
 gcmr()  { git commit -m "remove: $*"; }   # remove
-gcmc()  { git commit -m "chore: $*"; }    # chore
+gcmu()  { git commit -m "update: $*"; }   # update
 gcmf()  { git commit -m "fix: $*"; }      # fix
 gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
 gcmrl() { git commit -m "release: $*"; }  # release
 gcmrf() { git commit -m "refactor: $*"; } # refactor
-gcmw()  { git commit -m "wip: $*"; }      # wip
 gcms()  { git commit -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
 gcnms() { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
 
