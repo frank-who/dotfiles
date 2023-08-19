@@ -20,7 +20,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gcm='git commit -m'
-alias gcmempty='git commit --allow-empty -m'
+alias gce='git commit --allow-empty -m'
 alias gcnm='git commit -n -m'
 alias gco='git checkout'
 alias gdf='git diff --color | diff-so-fancy'
@@ -32,15 +32,16 @@ alias gst='git stash'
 alias gstp='git stash pop'
 alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|main|develop)\s*$)" | command xargs -n 1 git branch -d'
 
-gcma()  { git commit -m "add: $*"; }      # add
-gcmr()  { git commit -m "remove: $*"; }   # remove
-gcmu()  { git commit -m "update: $*"; }   # update
-gcmf()  { git commit -m "fix: $*"; }      # fix
-gcmhf() { git commit -m "hotfix: $*"; }   # hotfix
-gcmrl() { git commit -m "release: $*"; }  # release
-gcmrf() { git commit -m "refactor: $*"; } # refactor
-gcms()  { git commit -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
-gcnms() { git commit -n -m "stash: $(date +%Y-%m-%d--%H:%M) $*"; } #stash
+gcma()  { git commit -m "Add: $*"; }      # add
+gcmr()  { git commit -m "Remove: $*"; }   # remove
+gcmu()  { git commit -m "Update: $*"; }   # update
+gcmf()  { git commit -m "Fix: $*"; }      # fix
+gcmhf() { git commit -m "Hotfix: $*"; }   # hotfix
+gcmrl() { git commit -m "Release: $*"; }  # release
+gcmrf() { git commit -m "Refactor: $*"; } # refactor
+gcms()  { git commit -m "Commit: $(date +%Y-%m-%d--%H:%M) $*"; }
+gcnms() { git commit -n -m "Commit: $(date +%Y-%m-%d--%H:%M) $*"; }
+killport() { kill -9 $(lsof -ti:$*); }
 
 # Ruby / Rails
 alias be='bundle exec'
@@ -49,6 +50,7 @@ alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias rake='noglob rake'
 alias rce="EDITOR='code --wait' rails credentials:edit"
+alias stim-manifest='rails stimulus:manifest:update'
 alias rr='rails runner'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
