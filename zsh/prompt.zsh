@@ -87,7 +87,6 @@ parse_git_branch() {
   git symbolic-ref HEAD 2> /dev/null
 }
 
-
 ## Git State
 parse_git_state() {
 
@@ -147,7 +146,7 @@ git_prompt_string() {
 }
 
 prompt_git() {
-  if [ -d .git ]; then
+  if git tag > /dev/null 2>&1; then
     setopt promptsubst
     prompt_segment 237 white "$(git_prompt_string)"
   fi

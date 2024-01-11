@@ -42,7 +42,7 @@ module Dotfiles
       def self.restart_apps
         newline
         message('Restarting Apps'.bold, indent: 2)
-        %w/Finder Dock SystemUIServer/.each do |app|
+        %w[Finder Dock SystemUIServer].each do |app|
           system("killall #{app} &> /dev/null")
         end
       end
@@ -70,6 +70,12 @@ module Dotfiles
       # Enable subpixel font rendering on non-Apple LCDs
       # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
       # defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+
+      # New defaults to use
+      # defaults write com.apple.dock static-only -bool TRUE; killall Dock # Only show active apps in the Dock
+      # defaults write com.apple.dock showhidden -bool TRUE; killall Dock # Show hidden apps in the Dock
+      # defaults write com.apple.dock autohide-time-modifier -float 1; killall Dock # Dock hide/show animation speed
 
       def self.grouped_defaults
         {
