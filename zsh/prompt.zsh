@@ -16,7 +16,7 @@ GIT_PROMPT_CLEAN="%{%F{green}%}"
 
 SEGMENT_SEPARATOR=$'\uE0B0'
 
-## Begin segment
+# ==== Begin segment
 prompt_segment() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
@@ -30,8 +30,7 @@ prompt_segment() {
   [[ -n $3 ]] && echo -n $3
 }
 
-
-## End segment
+# ==== End segment
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
@@ -42,8 +41,7 @@ prompt_end() {
   CURRENT_BG=''
 }
 
-
-## Directory
+# ==== Directory
 prompt_dir() {
   local DIR
   DIR="${PWD/#$HOME/~}"
@@ -51,18 +49,18 @@ prompt_dir() {
   prompt_segment 239 blue $DIR
 }
 
-
-## Ruby
+# ==== Ruby
 prompt_python() {
-  local prompt_text
+  if [[ -a $(current_ruby) ]]; then
+    local prompt_text
 
-  if (( $+commands[pyenv] )); then
-    prompt_segment 238 yellow "$(pyenv version-name | sed -e 's/ (set.*$//')"
+    if (( $+commands[pyenv] )); then
+      prompt_segment 238 yellow "$(pyenv version-name | sed -e 's/ (set.*$//')"
+    fi
   fi
 }
 
-
-## Python
+# ==== Python
 prompt_ruby() {
   local prompt_text
 
@@ -81,13 +79,12 @@ prompt_ruby() {
   fi
 }
 
-
-## Git Branch
+# ==== Git Branch
 parse_git_branch() {
   git symbolic-ref HEAD 2> /dev/null
 }
 
-## Git State
+# ==== Git State
 parse_git_state() {
 
   local GIT_STATE=''
@@ -130,8 +127,7 @@ parse_git_state() {
 
 }
 
-
-## Git
+# ==== Git
 git_prompt_string() {
   local git_where="$(parse_git_branch)"
   local state
@@ -146,14 +142,13 @@ git_prompt_string() {
 }
 
 prompt_git() {
-  if git tag > /dev/null 2>&1; then
+  if [[ -d .git ]]; then
     setopt promptsubst
     prompt_segment 237 white "$(git_prompt_string)"
   fi
 }
 
-
-## Status
+# ==== Status
 prompt_status() {
   local symbols
   symbols=()
@@ -168,17 +163,13 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment $symbols default " %F{black}%T"
 }
 
-## Main prompt
+# ==== Prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_dir
-  if [[ -a ./Gemfile ]]; then
-    prompt_ruby
-  fi
-  if [[ -a ./manage.py ]]; then
-    prompt_python
-  fi
+  prompt_ruby
+  prompt_python
   prompt_git
   prompt_end
 }
