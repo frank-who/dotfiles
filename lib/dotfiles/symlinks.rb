@@ -5,16 +5,14 @@ module Dotfiles
 
     def self.run
       message('Symlinks:'.bold, indent: 0)
-      max_width = Dir["#{ROOT_PATH}/homedir/**/*.symlink"].map { |file| file_basename(file).length }.max
+      dir = Dir["#{ROOT_PATH}/homedir/{\.?}**/*.symlink"] +
+            Dir["#{ROOT_PATH}/homedir/**/*.symlink"]
 
-      Dir["#{ROOT_PATH}/homedir/**/*.symlink"].each do |file|
-        if File.directory?(file)
-          Dir["#{file}/*"].each do |dir_file|
-            create_symlink(dir_file, max_width)
-          end
-        else
-          create_symlink(file, max_width)
-        end
+
+      max_width = dir.map { |fs_item| file_basename(fs_item).length }.max
+
+      dir.each do |fs_item|
+        create_symlink(fs_item, max_width)
       end
     end
 
