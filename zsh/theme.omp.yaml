@@ -1,0 +1,146 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version: 2.0
+
+palette:
+  white:        '#FFFFFF'
+  black:        '#282C33'
+  error:        '#CC342E'
+  powerline100: '#CED9D6'
+  powerline200: '#A3B7B3'
+  powerline300: '#7B9891'
+  powerline400: '#537871'
+  powerline500: '#345952'
+  powerline600: '#072E28'
+  powerline700: '#001D18'
+  ruby-bg:      '#962621'
+  ruby-fg:      '#F3CDCC'
+  js-bg:        '#6CA35E'
+  git-modified: 'yellow'
+  git-added:    'green'
+  git-deleted:  'red'
+  git-working:  '#7E3AF2'
+
+
+final_space: true
+shell_integration: true
+terminal_background: p:powerline700
+
+blocks:
+  - alignment: left
+    type: prompt
+    segments:
+      - type: time
+        style: diamond
+        background: p:powerline200
+        foreground: p:black
+        leading_diamond: 
+        trailing_diamond: ' '
+        properties:
+          time_format: '15:04'
+        template: '{{ .CurrentDate | date .Format }}'
+
+      - type: path
+        style: diamond
+        background: p:powerline300
+        foreground: p:black
+        leading_diamond: 
+        properties:
+          home_icon: '󱤙 ~'
+          style: agnoster_short
+        template: '{{ .Path }}'
+
+      - type: text
+        style: plain
+        foreground: p:powerline300
+        template: '{{ if .Segments.Git.HEAD }}{{ else }}{{ if .Segments.Path.Path }} {{ else }}{{ end }}{{ end }}'
+
+      - type: git
+        style: powerline
+        background: p:powerline400
+        foreground: p:white
+        powerline_symbol: 
+        properties:
+          branch_icon: ' '
+          branch_max_length: 25
+          fetch_stash_count: true
+          fetch_status: true
+          fetch_upstream_icon: true
+          github_icon: ' '
+        templates:
+          - ' {{ .UpstreamIcon }} {{ .HEAD }}'
+
+      - type: text
+        style: powerline
+        background: p:git-modified
+        foreground: p:white
+        powerline_symbol: 
+        templates:
+          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
+
+      - type: text
+        style: powerline
+        background: p:git-added
+        foreground: p:black
+        powerline_symbol: 
+        templates:
+          - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
+
+      - type: text
+        style: powerline
+        background: p:git-deleted
+        foreground: p:white
+        powerline_symbol: 
+        templates:
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
+
+      - type: text
+        style: powerline
+        background: p:powerline400
+        foreground: p:white
+        powerline_symbol: 
+        # background_templates:
+        #   - '{{ if .Segments.Git.HEAD }}p:error{{ end }}'
+        templates:
+          - '  '
+          - '{{ if .Segments.Git.HEAD }}$(git rev-parse --short=7 HEAD 2> /dev/null){{ end }}'
+
+      - type: text
+        style: diamond
+        background: p:git-working
+        foreground: p:white
+        trailing_diamond: ' '
+        templates:
+          - '{{ if gt .Segments.Git.Ahead 0 }} {{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} {{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.StashCount 0 }}{{ Segments.Git.StashCount }}{{ end }}'
+
+  - alignment: right
+    type: prompt
+    segments:
+      - type: ruby
+        style: diamond
+        background: p:ruby-bg
+        foreground: p:ruby-fg
+        leading_diamond: 
+        trailing_diamond: 
+        template: '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
+
+      # - type: node
+      #   style: powerline
+      #   background: p:js-bg
+      #   foreground: p:white
+      #   powerline_symbol: 
+      #   template: '  '
+
+  - alignment: left
+    type: prompt
+    newline: true
+    segments:
+      - type: status
+        style: plain
+        background: p:powerline700
+        properties:
+          always_enabled: true
+        backgrounds_templates:
+          - '{{ if gt .Code 0 }}p:error{{ end }}'
+        template: 

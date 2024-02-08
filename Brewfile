@@ -1,10 +1,11 @@
 tap 'homebrew/bundle'
 
-brew 'git'
 brew 'diff-so-fancy'
+brew 'git'
 brew 'github/gh/gh'
 brew 'graphviz'
 brew 'imagemagick'
+brew 'jandedobbeleer/oh-my-posh/oh-my-posh'
 brew 'overmind'
 brew 'postgres'
 brew 'redis'

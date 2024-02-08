@@ -11,7 +11,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 
 # zsh
-alias reload!='. ~/.zshrc'
+alias reload!='exec zsh'
 
 # Git
 alias ga='git add'
