@@ -12,13 +12,12 @@ palette:
   powerline500: '#345952'
   powerline600: '#072E28'
   powerline700: '#001D18'
-  ruby-bg:      '#962621'
-  ruby-fg:      '#F3CDCC'
+  ruby-bg:      '#EB587C'
   js-bg:        '#6CA35E'
-  git-modified: 'yellow'
-  git-added:    'green'
-  git-deleted:  'red'
-  git-working:  '#7E3AF2'
+  git-modified: '#E9827B'
+  git-added:    '#8EC871'
+  git-deleted:  red
+  git-working:  p:powerline500 #7E3AF2
 
 
 final_space: true
@@ -28,6 +27,7 @@ terminal_background: p:powerline700
 blocks:
   - alignment: left
     type: prompt
+    newline: true
     segments:
       - type: time
         style: diamond
@@ -39,6 +39,17 @@ blocks:
           time_format: '15:04'
         template: '{{ .CurrentDate | date .Format }}'
 
+      # - type: executiontime
+      #   style: powerline
+      #   foreground: '#ffffff'
+      #   background: '#8800dd'
+      #   powerline_symbol: 
+      #   properties:
+      #     always_enabled: true
+      #     style: austin
+      #     threshold: 0
+      #   template: ' <#fefefe></> {{ .FormattedMs }} '
+
       - type: path
         style: diamond
         background: p:powerline300
@@ -46,8 +57,8 @@ blocks:
         leading_diamond: 
         properties:
           home_icon: '󱤙 ~'
-          style: agnoster_short
-        template: '{{ .Path }}'
+          style: mixed
+        template: '{{ path .Path .Location }}'
 
       - type: text
         style: plain
@@ -65,9 +76,9 @@ blocks:
           fetch_stash_count: true
           fetch_status: true
           fetch_upstream_icon: true
-          github_icon: ' '
+          github_icon: 
         templates:
-          - ' {{ .UpstreamIcon }} {{ .HEAD }}'
+          - ' {{ .UpstreamIcon }}  {{ .HEAD }}'
 
       - type: text
         style: powerline
@@ -101,8 +112,8 @@ blocks:
         # background_templates:
         #   - '{{ if .Segments.Git.HEAD }}p:error{{ end }}'
         templates:
-          - '  '
-          - '{{ if .Segments.Git.HEAD }}$(git rev-parse --short=7 HEAD 2> /dev/null){{ end }}'
+          - '   '
+          - '{{ if .Segments.Git.HEAD }}$(git rev-parse --short=7 HEAD 2> /dev/null){{ end }} '
 
       - type: text
         style: diamond
@@ -114,13 +125,13 @@ blocks:
           - '{{ if gt .Segments.Git.Behind 0 }} {{ .Segments.Git.Behind }}{{ end }}'
           - '{{ if gt .Segments.Git.StashCount 0 }}{{ Segments.Git.StashCount }}{{ end }}'
 
-  - alignment: right
+  - alignment: left
     type: prompt
     segments:
       - type: ruby
         style: diamond
         background: p:ruby-bg
-        foreground: p:ruby-fg
+        foreground: p:white
         leading_diamond: 
         trailing_diamond: 
         template: '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
