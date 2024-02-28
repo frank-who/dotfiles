@@ -2,72 +2,73 @@
 version: 2.0
 
 palette:
-  white:        '#FFFFFF'
-  black:        '#282C33'
-  error:        '#CC342E'
-  powerline100: '#CED9D6'
-  powerline200: '#A3B7B3'
-  powerline300: '#7B9891'
-  powerline400: '#537871'
-  powerline500: '#345952'
-  powerline600: '#072E28'
-  powerline700: '#001D18'
-  ruby-bg:      '#EB587C'
-  js-bg:        '#6CA35E'
-  git-modified: '#E9827B'
-  git-added:    '#8EC871'
-  git-deleted:  red
-  git-working:  p:powerline500 #7E3AF2
+  black:        'black'
+  blue:         'blue'
+  error:        'p:red'
+  green:        'green'
+  purple:       '#5F5478'
+  red:          'red'
+  white:        'white'
+  power-1:      '#CED9D6'
+  power-2:      '#A3B7B3'
+  power-3:      '#7B9891'
+  power-4:      '#537871'
+  power-5:      '#345952'
+  power-6:      '#072E28'
+  power-7:      '#001D18'
+  ruby:         '#A51D24'
+  js:           '#FCDC00'
+  git-added:    'p:green'
+  git-deleted:  'p:red'
+  git-modified: 'yellow'
+  git-working:  'p:blue'
 
-
-final_space: true
+final_space: false
 shell_integration: true
-terminal_background: p:powerline700
 
 blocks:
   - alignment: left
     type: prompt
-    newline: true
     segments:
       - type: time
         style: diamond
-        background: p:powerline200
+        background: p:power-1
         foreground: p:black
         leading_diamond: 
-        trailing_diamond: ' '
+        trailing_diamond: 
         properties:
           time_format: '15:04'
         template: '{{ .CurrentDate | date .Format }}'
 
       # - type: executiontime
       #   style: powerline
-      #   foreground: '#ffffff'
-      #   background: '#8800dd'
+      #   foreground: p:white
+      #   background: p:purple
       #   powerline_symbol: 
       #   properties:
       #     always_enabled: true
       #     style: austin
       #     threshold: 0
-      #   template: ' <#fefefe></> {{ .FormattedMs }} '
+      #   template: '  {{ .FormattedMs }} '
 
       - type: path
         style: diamond
-        background: p:powerline300
+        background: p:power-3
         foreground: p:black
-        leading_diamond: 
+        leading_diamond: ' '
         properties:
-          home_icon: '󱤙 ~'
+          home_icon: ' ~'
           style: mixed
-        template: '{{ path .Path .Location }}'
+        template: '{{ .Path }}'
 
       - type: text
         style: plain
-        foreground: p:powerline300
+        foreground: p:power-3
         template: '{{ if .Segments.Git.HEAD }}{{ else }}{{ if .Segments.Path.Path }} {{ else }}{{ end }}{{ end }}'
 
       - type: git
         style: powerline
-        background: p:powerline400
+        background: p:power-4
         foreground: p:white
         powerline_symbol: 
         properties:
@@ -78,12 +79,22 @@ blocks:
           fetch_upstream_icon: true
           github_icon: 
         templates:
-          - ' {{ .UpstreamIcon }}  {{ .HEAD }}'
+          - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }} {{ else }}{{ .HEAD }}{{ end }}'
+
+      - type: text
+        style: powerline
+        background: p:power-2
+        foreground: p:white
+        powerline_symbol: 
+        background_templates:
+          - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
+        templates:
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
 
       - type: text
         style: powerline
         background: p:git-modified
-        foreground: p:white
+        foreground: p:black
         powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
@@ -105,17 +116,6 @@ blocks:
           - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
-        style: powerline
-        background: p:powerline400
-        foreground: p:white
-        powerline_symbol: 
-        # background_templates:
-        #   - '{{ if .Segments.Git.HEAD }}p:error{{ end }}'
-        templates:
-          - '   '
-          - '{{ if .Segments.Git.HEAD }}$(git rev-parse --short=7 HEAD 2> /dev/null){{ end }} '
-
-      - type: text
         style: diamond
         background: p:git-working
         foreground: p:white
@@ -130,15 +130,15 @@ blocks:
     segments:
       - type: ruby
         style: diamond
-        background: p:ruby-bg
+        background: p:ruby
         foreground: p:white
-        leading_diamond: 
+        leading_diamond: ' '
         trailing_diamond: 
         template: '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
 
       # - type: node
       #   style: powerline
-      #   background: p:js-bg
+      #   background: p:js
       #   foreground: p:white
       #   powerline_symbol: 
       #   template: '  '
@@ -147,11 +147,24 @@ blocks:
     type: prompt
     newline: true
     segments:
-      - type: status
-        style: plain
-        background: p:powerline700
+      - type: session
+        style: diamond
+        background: p:green
+        foreground: p:black
+        leading_diamond: 
+        trailing_diamond: ' '
+        template: '{{ if .SSHSession }}{{ end }}'
+
+      - type: text
+        style: diamond
+        background: p:black
+        foreground: p:blue
+        leading_diamond: 
+        trailing_diamond: 
         properties:
           always_enabled: true
-        backgrounds_templates:
+        background_templates:
           - '{{ if gt .Code 0 }}p:error{{ end }}'
+        foreground_templates:
+          - '{{ if gt .Code 0 }}p:white{{ end }}'
         template: 

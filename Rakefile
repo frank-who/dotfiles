@@ -45,20 +45,8 @@ namespace :dotfiles do
     Dotfiles::Homebrew.run
   end
 
-  task :atom do
-    Dotfiles::Atom.run
-  end
-
   task :code do
     Dotfiles::Code.run
-  end
-
-  task :update_atom_icon do
-    Dotfiles::Atom.update_icon
-  end
-
-  task :update_code_icon do
-    Dotfiles::Code.update_icon
   end
 
 end

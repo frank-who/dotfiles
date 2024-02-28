@@ -10,6 +10,8 @@ module Dotfiles
         message('zsh'.red, indent: 2)
         system('chsh -s `which zsh`')
       end
+
+      system('curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh')
     end
 
   end
