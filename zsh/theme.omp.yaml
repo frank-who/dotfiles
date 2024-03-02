@@ -23,7 +23,7 @@ palette:
   git-modified: 'yellow'
   git-working:  'p:blue'
 
-final_space: false
+final_space: true
 shell_integration: true
 
 blocks:
@@ -118,11 +118,11 @@ blocks:
       - type: text
         style: diamond
         background: p:git-working
-        foreground: p:white
+        foreground: p:black
         trailing_diamond: ' '
         templates:
-          - '{{ if gt .Segments.Git.Ahead 0 }} {{ .Segments.Git.Ahead }}{{ end }}'
-          - '{{ if gt .Segments.Git.Behind 0 }} {{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷{{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮{{ .Segments.Git.Behind }}{{ end }}'
           - '{{ if gt .Segments.Git.StashCount 0 }}{{ Segments.Git.StashCount }}{{ end }}'
 
   - alignment: left
