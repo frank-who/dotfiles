@@ -5,9 +5,10 @@ palette:
   black:        'black'
   blue:         'blue'
   error:        'p:red'
-  green:        'green'
+  green:        '#54e184'
   purple:       '#5F5478'
   red:          'red'
+  turquoise:    '#13BBB7'
   white:        'white'
   power-1:      '#CED9D6'
   power-2:      '#A3B7B3'
@@ -20,7 +21,7 @@ palette:
   js:           '#FCDC00'
   git-added:    'p:green'
   git-deleted:  'p:red'
-  git-modified: 'yellow'
+  git-modified: '#CF9C00'
   git-working:  'p:blue'
 
 final_space: true
@@ -30,26 +31,32 @@ blocks:
   - alignment: left
     type: prompt
     segments:
-      - type: time
+      - type: text
         style: diamond
-        background: p:power-1
+        background: p:power-2
         foreground: p:black
         leading_diamond: 
-        trailing_diamond: 
+        template: '󰣘 '
+
+      - type: time
+        style: powerline
+        background: p:power-2
+        foreground: p:black
+        powerline_symbol: 
         properties:
-          time_format: '15:04'
+          time_format: '15:04:05'
         template: '{{ .CurrentDate | date .Format }}'
 
-      # - type: executiontime
-      #   style: powerline
-      #   foreground: p:white
-      #   background: p:purple
-      #   powerline_symbol: 
-      #   properties:
-      #     always_enabled: true
-      #     style: austin
-      #     threshold: 0
-      #   template: '  {{ .FormattedMs }} '
+      - type: executiontime
+        style: diamond
+        background: p:purple
+        foreground: p:white
+        trailing_diamond: 
+        properties:
+          always_enabled: true
+          style: austin
+          threshold: 0
+        template: ' 󱫌 {{ .FormattedMs }}'
 
       - type: path
         style: diamond
@@ -57,7 +64,7 @@ blocks:
         foreground: p:black
         leading_diamond: ' '
         properties:
-          home_icon: ' ~'
+          home_icon: '~'
           style: mixed
         template: '{{ .Path }}'
 
@@ -69,7 +76,7 @@ blocks:
       - type: git
         style: powerline
         background: p:power-4
-        foreground: p:white
+        foreground: p:black
         powerline_symbol: 
         properties:
           branch_icon: ' '
@@ -83,11 +90,11 @@ blocks:
 
       - type: text
         style: powerline
-        background: p:power-2
-        foreground: p:white
+        background: p:power-5
+        foreground: p:green
         powerline_symbol: 
-        background_templates:
-          - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
+        # background_templates:
+        #   - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
         templates:
           - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
 
@@ -136,29 +143,14 @@ blocks:
         trailing_diamond: 
         template: '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
 
-      # - type: node
-      #   style: powerline
-      #   background: p:js
-      #   foreground: p:white
-      #   powerline_symbol: 
-      #   template: '  '
-
   - alignment: left
     type: prompt
     newline: true
     segments:
-      - type: session
-        style: diamond
-        background: p:green
-        foreground: p:black
-        leading_diamond: 
-        trailing_diamond: ' '
-        template: '{{ if .SSHSession }}{{ end }}'
-
       - type: text
         style: diamond
-        background: p:black
-        foreground: p:blue
+        background: p:power-5
+        foreground: p:green
         leading_diamond: 
         trailing_diamond: 
         properties:
