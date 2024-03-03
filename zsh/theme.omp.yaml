@@ -89,16 +89,6 @@ blocks:
 
       - type: text
         style: powerline
-        background: p:power-5
-        foreground: p:green
-        powerline_symbol: 
-        background_templates:
-          - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
-        templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
-
-      - type: text
-        style: powerline
         background: p:git-modified
         foreground: p:power-7
         powerline_symbol: 
@@ -122,14 +112,24 @@ blocks:
           - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
-        style: diamond
-        background: p:git-working
+        style: powerline
+        background: p:power-5
         foreground: p:green
-        trailing_diamond: ' '
+        powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷 {{ .Segments.Git.Ahead }}{{ end }}'
           - '{{ if gt .Segments.Git.Behind 0 }} 󰜮 {{ .Segments.Git.Behind }}{{ end }}'
           - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣 {{ .Segments.Git.StashCount }}{{ end }}'
+
+      - type: text
+        style: diamond
+        background: p:git-working
+        foreground: p:green
+        trailing_diamond: ' '
+        background_templates:
+          - '{{ if .Segments.Git.Working.Changed }}p:purple{{ end }}'
+        templates:
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
     type: prompt
