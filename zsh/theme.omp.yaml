@@ -127,8 +127,10 @@ blocks:
         foreground: p:green
         trailing_diamond: ' '
         background_templates:
-          - '{{ if .Segments.Git.Working.Changed }}p:purple{{ end }}'
+          - '{{ if .Segments.Git.Working.String }}p:purple{{ end }}'
         templates:
+          - '{{ .Segments.Git.Working.String }}'
+          - '{{ .Segments.Git.Staging.String }}'
           - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
