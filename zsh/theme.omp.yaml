@@ -102,9 +102,18 @@ blocks:
         foreground: magenta
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Ahead 0 }}󰜷{{ end }}'
+          - '{{ if gt .Segments.Git.Ahead 0 }}󰜷{{ .Segments.Git.Ahead }}{{ end }}'
           - '{{ if gt .Segments.Git.Behind 0 }}󰜮{{ .Segments.Git.Behind }}{{ end }}'
           - '{{ if gt .Segments.Git.StashCount 0 }}󱝣{{ .Segments.Git.StashCount }}{{ end }}'
+
+
+      - type: text
+        style: powerline
+        background: p:power-6
+        foreground: magenta
+        powerline_symbol: 
+        templates:
+          - '{{ if or .Segments.Git.Working.Changed .Segments.Git.Staging.Changed }}.{{ else }} {{ end }}'
 
       - type: text
         style: powerline
