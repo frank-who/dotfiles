@@ -94,7 +94,7 @@ blocks:
         foreground: p:power-6
         powerline_symbol: 
         templates:
-          - '{{ if .Segments.Git.HEAD }}|{{ end }}'
+          - "{{ if .Segments.Git.HEAD }}_{{ end }}"
 
       - type: text
         style: powerline
