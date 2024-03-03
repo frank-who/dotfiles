@@ -22,7 +22,7 @@ palette:
   git-added:    'p:green'
   git-deleted:  'p:red'
   git-modified: '#CF9C00'
-  git-working:  'p:blue'
+  git-working:  'p:purple'
 
 final_space: true
 shell_integration: true
@@ -34,14 +34,14 @@ blocks:
       - type: text
         style: diamond
         background: p:power-2
-        foreground: p:black
+        foreground: p:power-6
         leading_diamond: 
-        template: '󰣘 '
+        template: '󱇪 '
 
       - type: time
         style: powerline
         background: p:power-2
-        foreground: p:black
+        foreground: p:power-7
         powerline_symbol: 
         properties:
           time_format: '15:04:05'
@@ -49,19 +49,18 @@ blocks:
 
       - type: executiontime
         style: diamond
-        background: p:purple
-        foreground: p:white
+        background: p:power-3
+        foreground: p:power-7
         trailing_diamond: 
         properties:
-          always_enabled: true
-          style: austin
+          style: round
           threshold: 0
-        template: ' 󱫌 {{ .FormattedMs }}'
+        template: ' 󱎫 {{ .FormattedMs }}'
 
       - type: path
         style: diamond
         background: p:power-3
-        foreground: p:black
+        foreground: p:power-7
         leading_diamond: ' '
         properties:
           home_icon: '~'
@@ -76,7 +75,7 @@ blocks:
       - type: git
         style: powerline
         background: p:power-4
-        foreground: p:black
+        foreground: p:power-7
         powerline_symbol: 
         properties:
           branch_icon: ' '
@@ -93,15 +92,15 @@ blocks:
         background: p:power-5
         foreground: p:green
         powerline_symbol: 
-        # background_templates:
-        #   - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
+        background_templates:
+          - '{{ if .Segments.Git.Working }}p:purple{{ end }}'
         templates:
           - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
 
       - type: text
         style: powerline
         background: p:git-modified
-        foreground: p:black
+        foreground: p:power-7
         powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
@@ -109,7 +108,7 @@ blocks:
       - type: text
         style: powerline
         background: p:git-added
-        foreground: p:black
+        foreground: p:power-7
         powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
@@ -125,12 +124,12 @@ blocks:
       - type: text
         style: diamond
         background: p:git-working
-        foreground: p:black
+        foreground: p:green
         trailing_diamond: ' '
         templates:
-          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷{{ .Segments.Git.Ahead }}{{ end }}'
-          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮{{ .Segments.Git.Behind }}{{ end }}'
-          - '{{ if gt .Segments.Git.StashCount 0 }}{{ Segments.Git.StashCount }}{{ end }}'
+          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷 {{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮 {{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣 {{ .Segments.Git.StashCount }}{{ end }}'
 
   - alignment: left
     type: prompt
@@ -148,15 +147,9 @@ blocks:
     newline: true
     segments:
       - type: text
-        style: diamond
-        background: p:power-5
         foreground: p:green
-        leading_diamond: 
-        trailing_diamond: 
         properties:
           always_enabled: true
-        background_templates:
-          - '{{ if gt .Code 0 }}p:error{{ end }}'
         foreground_templates:
-          - '{{ if gt .Code 0 }}p:white{{ end }}'
+          - '{{ if gt .Code 0 }}p:error{{ end }}'
         template: 
