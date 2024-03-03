@@ -111,7 +111,7 @@ blocks:
         foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: powerline
@@ -119,7 +119,7 @@ blocks:
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Added 0 }} {{ .Segments.Git.Working.Added }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
 
       - type: text
         style: powerline
@@ -127,7 +127,7 @@ blocks:
         foreground: p:white
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
         style: diamond
@@ -136,9 +136,9 @@ blocks:
         trailing_diamond: ' '
         foreground_templates:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
+          - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Working.Changed }} {{ else }} {{ end }}'
-          - '{{ if .Segments.Git.Commit.Sha }} {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
     type: prompt
