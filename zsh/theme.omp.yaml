@@ -37,7 +37,7 @@ blocks:
         background: p:power-2
         foreground: p:power-6
         leading_diamond: 
-        template: '󱇪 '
+        template: 󰅐
 
       - type: time
         style: powerline
@@ -56,7 +56,7 @@ blocks:
         properties:
           style: round
           threshold: 0
-        template: ' 󱎫 {{ .FormattedMs }}'
+        template: ' 󰅒 {{ .FormattedMs }}'
 
       - type: path
         style: diamond
@@ -86,15 +86,15 @@ blocks:
           fetch_upstream_icon: true
           github_icon: 
         templates:
-          # - '{{ .LatestTag }}'
           - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }}{{ else }}{{ .HEAD }}{{ end }}'
 
-      # - type: text
-      #   style: powerline
-      #   background: p:power-6
-      #   # foreground: p:power-6
-      #   powerline_symbol: 
-      #   template: '{{ if or .Segments.Git.Ahead .Segments.Git.Behind .Segments.Git.StashCount }}.{{ end }}'
+      - type: text
+        style: powerline
+        background: p:power-6
+        foreground: p:power-6
+        powerline_symbol: 
+        templates:
+          - '{{ if .Segments.Git.HEAD }}|{{ end }}'
 
       - type: text
         style: powerline
@@ -102,18 +102,10 @@ blocks:
         foreground: magenta
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Ahead 0 }}󰜷{{ .Segments.Git.Ahead }}{{ end }}'
-          - '{{ if gt .Segments.Git.Behind 0 }}󰜮{{ .Segments.Git.Behind }}{{ end }}'
-          - '{{ if gt .Segments.Git.StashCount 0 }}󱝣{{ .Segments.Git.StashCount }}{{ end }}'
-
-
-      - type: text
-        style: powerline
-        background: p:power-6
-        foreground: magenta
-        powerline_symbol: 
-        templates:
-          - '{{ if or .Segments.Git.Working.Changed .Segments.Git.Staging.Changed }}.{{ else }} {{ end }}'
+          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷{{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮{{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣{{ .Segments.Git.StashCount }}{{ end }}'
+          - '{{ if gt (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) 0 }}  {{ (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) }}{{ end }}'
 
       - type: text
         style: powerline
@@ -121,7 +113,7 @@ blocks:
         foreground: p:git-deleted
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
         style: powerline
@@ -129,7 +121,7 @@ blocks:
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Untracked 0 }} {{ .Segments.Git.Working.Untracked }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Untracked 0 }}  {{ .Segments.Git.Working.Untracked }}{{ end }}'
 
       - type: text
         style: powerline
@@ -137,7 +129,7 @@ blocks:
         foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: diamond
@@ -148,7 +140,7 @@ blocks:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }} {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
 
   - alignment: left
     type: prompt
