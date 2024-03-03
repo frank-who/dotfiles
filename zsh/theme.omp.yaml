@@ -88,13 +88,30 @@ blocks:
         templates:
           - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }}{{ else }}{{ .HEAD }}{{ end }}'
 
+      # - type: text
+      #   style: powerline
+      #   background: p:power-6
+      #   # foreground: p:power-6
+      #   powerline_symbol: 
+      #   template: '{{ if or .Segments.Git.Ahead .Segments.Git.Behind .Segments.Git.StashCount }}.{{ end }}'
+
+      - type: text
+        style: powerline
+        background: p:power-6
+        foreground: magenta
+        powerline_symbol: 
+        templates:
+          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷{{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮{{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣{{ .Segments.Git.StashCount }}{{ end }}'
+
       - type: text
         style: powerline
         background: p:power-6
         foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: powerline
@@ -102,7 +119,7 @@ blocks:
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Added 0 }} {{ .Segments.Git.Working.Added }}{{ end }}'
 
       - type: text
         style: powerline
@@ -110,17 +127,7 @@ blocks:
         foreground: p:white
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
-
-      - type: text
-        style: powerline
-        background: p:power-6
-        foreground: p:green
-        powerline_symbol: 
-        templates:
-          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷 {{ .Segments.Git.Ahead }}{{ end }}'
-          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮 {{ .Segments.Git.Behind }}{{ end }}'
-          - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣 {{ .Segments.Git.StashCount }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
         style: diamond
@@ -130,7 +137,7 @@ blocks:
         foreground_templates:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Working.Changed }} {{ else }}{{ end }}'
+          - '{{ if .Segments.Git.Working.Changed }} {{ else }} {{ end }}'
           - '{{ if .Segments.Git.Commit.Sha }} {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
