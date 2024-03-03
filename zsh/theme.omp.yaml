@@ -127,7 +127,7 @@ blocks:
         foreground: p:green
         trailing_diamond: ' '
         background_templates:
-          - '{{ if .Segments.Git.Working.String }}p:purple{{ end }}'
+          - '{{ if .Segments.Git.Working.String }}p:git-modified{{ end }}'
         templates:
           - '{{ .Segments.Git.Working.String }}'
           - '{{ .Segments.Git.Staging.String }}'
