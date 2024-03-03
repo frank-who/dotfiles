@@ -124,13 +124,11 @@ blocks:
       - type: text
         style: diamond
         background: p:git-working
-        foreground: p:green
+        foreground: p:power-7
         trailing_diamond: ' '
         background_templates:
-          - '{{ if .Segments.Git.Working.String }}p:git-modified{{ end }}'
+          - '{{ if .Segments.Git.Working.String }}p:git-working{{ end }}'
         templates:
-          - '{{ .Segments.Git.Working.String }}'
-          - '{{ .Segments.Git.Staging.String }}'
           - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
