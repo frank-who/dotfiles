@@ -10,6 +10,7 @@ palette:
   red:          'red'
   turquoise:    '#13BBB7'
   white:        'white'
+  yellow:       'yellow'
   power-1:      '#CED9D6'
   power-2:      '#A3B7B3'
   power-3:      '#7B9891'
@@ -21,7 +22,7 @@ palette:
   js:           '#FCDC00'
   git-added:    'p:green'
   git-deleted:  'p:red'
-  git-modified: '#CF9C00'
+  git-modified: 'yellow'
   git-working:  'p:purple'
 
 final_space: true
@@ -36,7 +37,7 @@ blocks:
         background: p:power-2
         foreground: p:power-6
         leading_diamond: 
-        template: '󱇪 '
+        template: 󱇪
 
       - type: time
         style: powerline
@@ -85,20 +86,20 @@ blocks:
           fetch_upstream_icon: true
           github_icon: 
         templates:
-          - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }} {{ else }}{{ .HEAD }}{{ end }}'
+          - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }}{{ else }}{{ .HEAD }}{{ end }}'
 
       - type: text
         style: powerline
-        background: p:git-modified
-        foreground: p:power-7
+        background: p:power-6
+        foreground: p:git-modified
         powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: powerline
-        background: p:git-added
-        foreground: p:power-7
+        background: p:power-6
+        foreground: p:git-added
         powerline_symbol: 
         templates:
           - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
@@ -113,7 +114,7 @@ blocks:
 
       - type: text
         style: powerline
-        background: p:power-5
+        background: p:power-6
         foreground: p:green
         powerline_symbol: 
         templates:
@@ -123,13 +124,14 @@ blocks:
 
       - type: text
         style: diamond
-        background: p:git-working
-        foreground: p:power-7
+        background: p:power-6
+        foreground: p:green
         trailing_diamond: ' '
-        background_templates:
-          - '{{ if .Segments.Git.Working.String }}p:git-working{{ end }}'
+        foreground_templates:
+          - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+          - '{{ if .Segments.Git.Working.Changed }} {{ else }}{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }} {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
     type: prompt
