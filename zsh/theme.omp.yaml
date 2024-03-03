@@ -37,7 +37,7 @@ blocks:
         background: p:power-2
         foreground: p:power-6
         leading_diamond: 
-        template: 󱇪
+        template: '󱇪 '
 
       - type: time
         style: powerline
@@ -86,6 +86,7 @@ blocks:
           fetch_upstream_icon: true
           github_icon: 
         templates:
+          # - '{{ .LatestTag }}'
           - ' {{ if .UpstreamIcon }}{{ .UpstreamIcon }}  {{ .HEAD }}{{ else }}{{ .HEAD }}{{ end }}'
 
       # - type: text
@@ -108,10 +109,10 @@ blocks:
       - type: text
         style: powerline
         background: p:power-6
-        foreground: p:git-modified
+        foreground: p:git-deleted
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
         style: powerline
@@ -119,15 +120,15 @@ blocks:
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Added 0 }}  {{ .Segments.Git.Working.Added }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Untracked 0 }}  {{ .Segments.Git.Working.Untracked }}{{ end }}'
 
       - type: text
         style: powerline
-        background: p:git-deleted
-        foreground: p:white
+        background: p:power-6
+        foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: diamond
@@ -138,7 +139,7 @@ blocks:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }}{{ if not .Segments.Git.Working.Changed }} {{ end }} {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
     type: prompt
