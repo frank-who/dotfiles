@@ -2,28 +2,30 @@
 version: 2.0
 
 palette:
-  black:        'black'
-  blue:         'blue'
-  error:        'p:red'
-  green:        '#54e184'
-  purple:       '#5F5478'
-  red:          'red'
-  turquoise:    '#13BBB7'
-  white:        'white'
-  yellow:       'yellow'
-  power-1:      '#CED9D6'
-  power-2:      '#A3B7B3'
-  power-3:      '#7B9891'
-  power-4:      '#537871'
-  power-5:      '#345952'
-  power-6:      '#072E28'
-  power-7:      '#001D18'
-  ruby:         '#A51D24'
-  js:           '#FCDC00'
-  git-added:    'p:green'
-  git-deleted:  'p:red'
-  git-modified: 'yellow'
-  git-working:  'p:purple'
+  black:         'black'
+  blue:          'blue'
+  error:         'p:red'
+  green:         '#54e184'
+  purple:        '#5F5478'
+  red:           'red'
+  turquoise:     '#13BBB7'
+  white:         'white'
+  yellow:        'yellow'
+  power-0:       'p:power-7'
+  power-1:       '#CED9D6'
+  power-2:       '#A3B7B3'
+  power-3:       '#7B9891'
+  power-4:       '#537871'
+  power-5:       '#345952'
+  power-6:       '#072E28'
+  power-7:       '#001D18'
+  ruby:          '#A51D24'
+  js:            '#FCDC00'
+  git-powerline: '#1f2227'
+  git-added:     'p:green'
+  git-deleted:   'p:red'
+  git-modified:  'yellow'
+  git-working:   'p:purple'
 
 final_space: true
 shell_integration: true
@@ -37,7 +39,7 @@ blocks:
         background: p:power-2
         foreground: p:power-6
         leading_diamond: 
-        template: 󰅐
+        template: 󱑍
 
       - type: time
         style: powerline
@@ -45,7 +47,7 @@ blocks:
         foreground: p:power-7
         powerline_symbol: 
         properties:
-          time_format: '15:04:05'
+          time_format: '15:04'
         template: '{{ .CurrentDate | date .Format }}'
 
       - type: executiontime
@@ -55,7 +57,7 @@ blocks:
         trailing_diamond: 
         properties:
           style: round
-          threshold: 0
+          threshold: 150
         template: ' 󰅒 {{ .FormattedMs }}'
 
       - type: path
@@ -90,15 +92,15 @@ blocks:
 
       - type: text
         style: powerline
-        background: p:power-6
-        foreground: p:power-6
+        background: p:power-0
+        foreground: p:power-0
         powerline_symbol: 
         templates:
-          - "{{ if .Segments.Git.HEAD }}_{{ end }}"
+          - '{{ if gt (add .Segments.Git.Working.Added .Segments.Git.Working.Deleted .Segments.Git.Working.Modified) 0 }}_{{ end }}'
 
       - type: text
         style: powerline
-        background: p:power-6
+        background: p:power-0
         foreground: magenta
         powerline_symbol: 
         templates:
@@ -110,33 +112,33 @@ blocks:
 
       - type: text
         style: powerline
-        background: p:power-6
+        background: p:power-0
         foreground: p:git-deleted
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }}  {{ .Segments.Git.Working.Deleted }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
       - type: text
         style: powerline
-        background: p:power-6
+        background: p:power-0
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Untracked 0 }}  {{ .Segments.Git.Working.Untracked }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Untracked 0 }} {{ .Segments.Git.Working.Untracked }}{{ end }}'
 
       - type: text
         style: powerline
-        background: p:power-6
+        background: p:power-0
         foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }}  {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: diamond
-        background: p:power-6
+        background: p:power-0
         foreground: p:green
-        trailing_diamond: ' '
+        trailing_diamond: 
         foreground_templates:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
