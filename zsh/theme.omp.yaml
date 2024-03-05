@@ -113,14 +113,6 @@ blocks:
       - type: text
         style: powerline
         background: p:power-0
-        foreground: p:git-deleted
-        powerline_symbol: 
-        templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
-
-      - type: text
-        style: powerline
-        background: p:power-0
         foreground: p:git-added
         powerline_symbol: 
         templates:
@@ -135,6 +127,14 @@ blocks:
           - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
+        style: powerline
+        background: p:power-0
+        foreground: p:git-deleted
+        powerline_symbol: 
+        templates:
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
+
+      - type: text
         style: diamond
         background: p:power-0
         foreground: p:green
@@ -143,7 +143,7 @@ blocks:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }} {{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
   - alignment: left
     type: prompt
