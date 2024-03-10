@@ -30,6 +30,10 @@ palette:
 final_space: true
 shell_integration: true
 
+transient_prompt:
+  foreground: p:white
+  template: '<d></d> '
+
 blocks:
   - alignment: left
     type: prompt
@@ -149,6 +153,7 @@ blocks:
         leading_diamond: ' '
         templates:
           - '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
+          - '{{ if readFile "./bin/rails" }}{{ else }}<p:ruby,transparent></>{{ end }}'
 
       - type: text
         style: powerline
