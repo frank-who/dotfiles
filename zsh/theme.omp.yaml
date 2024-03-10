@@ -55,7 +55,7 @@ blocks:
         foreground: p:power-7
         powerline_symbol: 
         properties:
-          style: galveston
+          style: round
           threshold: 500
         template: ' 󰅒 {{ .FormattedMs }}'
 
