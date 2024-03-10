@@ -34,27 +34,21 @@ blocks:
   - alignment: left
     type: prompt
     segments:
-      - type: text
+      - type: time
         style: diamond
         background: p:power-2
-        foreground: p:power-6
-        leading_diamond: 
-        template: 󱑍
-
-      - type: time
-        style: powerline
-        background: p:power-2
         foreground: p:power-7
-        powerline_symbol: 
+        leading_diamond: 
+        trailing_diamond: 
         properties:
           time_format: '15:04'
         template: '{{ .CurrentDate | date .Format }}'
 
       - type: executiontime
-        style: diamond
+        style: powerline
         background: p:power-3
         foreground: p:power-7
-        trailing_diamond: 
+        powerline_symbol: 
         properties:
           style: round
           threshold: 150
@@ -92,11 +86,22 @@ blocks:
 
       - type: text
         style: powerline
+        background: p:power-5
+        foreground: p:green
+        powerline_symbol: 
+        foreground_templates:
+          - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
+          - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
+        templates:
+          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+
+      - type: text
+        style: powerline
         background: p:power-0
         foreground: p:power-0
         powerline_symbol: 
         templates:
-          - '{{ if gt (add .Segments.Git.Working.Added .Segments.Git.Working.Deleted .Segments.Git.Working.Modified) 0 }}_{{ end }}'
+          - '{{ if gt (add .Segments.Git.Working.Untracked .Segments.Git.Working.Deleted .Segments.Git.Working.Modified) 0 }}_{{ end }}'
 
       - type: text
         style: powerline
@@ -134,17 +139,6 @@ blocks:
         templates:
           - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
-      - type: text
-        style: diamond
-        background: p:power-0
-        foreground: p:green
-        trailing_diamond: 
-        foreground_templates:
-          - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
-          - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
-        templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
-
   - alignment: left
     type: prompt
     segments:
@@ -153,8 +147,16 @@ blocks:
         background: p:ruby
         foreground: p:white
         leading_diamond: ' '
-        trailing_diamond: 
-        template: '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
+        templates:
+          - '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
+
+      - type: text
+        style: powerline
+        background: red
+        foreground: p:black
+        powerline_symbol: 
+        templates:
+          - '{{ if readFile "./bin/rails" }} 󰫏 $(./bin/rails version | sed s/Rails\ //){{ end }}'
 
   - alignment: left
     type: prompt
