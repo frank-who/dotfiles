@@ -43,10 +43,11 @@ blocks:
         background: p:power-2
         foreground: p:power-7
         leading_diamond: 
-        trailing_diamond: 
         properties:
           time_format: '15:04'
-        template: '{{ .CurrentDate | date .Format }}'
+        templates:
+          - '{{ .CurrentDate | date .Format }}'
+          - '{{ if gt .Segments.Executiontime.Ms 500 }}{{ else }}<p:power-2,transparent></>{{ end }}'
 
       - type: executiontime
         style: powerline
@@ -54,8 +55,8 @@ blocks:
         foreground: p:power-7
         powerline_symbol: 
         properties:
-          style: round
-          threshold: 150
+          style: galveston
+          threshold: 500
         template: ' 󰅒 {{ .FormattedMs }}'
 
       - type: path
@@ -64,9 +65,13 @@ blocks:
         foreground: p:power-7
         leading_diamond: ' '
         properties:
-          home_icon: '~'
+          home_icon: '<d>󰣘</d> '
+          folder_icon: '<d>󰉓 </d>'
+          mixed_threshold: 4
           style: mixed
-        template: '{{ .Path }}'
+        templates:
+
+          - '{{ if eq "<d>󰣘</d> " .Path }} <d>󰣘</d> {{ else }}{{ .Path }}{{ end }}'
 
       - type: text
         style: plain
@@ -97,7 +102,7 @@ blocks:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }}  {{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }} <d> </d><b>{{ trunc 7 .Segments.Git.Commit.Sha }}</b>{{ end }}'
 
       - type: text
         style: powerline
@@ -114,10 +119,10 @@ blocks:
         powerline_symbol: 
         templates:
           - '{{ .BranchStatus }}'
-          - '{{ if gt .Segments.Git.Ahead 0 }} 󰜷{{ .Segments.Git.Ahead }}{{ end }}'
-          - '{{ if gt .Segments.Git.Behind 0 }} 󰜮{{ .Segments.Git.Behind }}{{ end }}'
-          - '{{ if gt .Segments.Git.StashCount 0 }} 󱝣{{ .Segments.Git.StashCount }}{{ end }}'
-          - '{{ if gt (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) 0 }}  {{ (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) }}{{ end }}'
+          - '{{ if gt .Segments.Git.Ahead 0 }} <d>󰜷</d>{{ .Segments.Git.Ahead }}{{ end }}'
+          - '{{ if gt .Segments.Git.Behind 0 }} <d>󰜮</d>{{ .Segments.Git.Behind }}{{ end }}'
+          - '{{ if gt .Segments.Git.StashCount 0 }} <d>󱝣</d>{{ .Segments.Git.StashCount }}{{ end }}'
+          - '{{ if gt (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) 0 }} <d></d> {{ (add .Segments.Git.Staging.Added .Segments.Git.Staging.Deleted .Segments.Git.Staging.Modified) }}{{ end }}'
 
       - type: text
         style: powerline
@@ -125,7 +130,7 @@ blocks:
         foreground: p:git-added
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Untracked 0 }} {{ .Segments.Git.Working.Untracked }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Untracked 0 }}<d></d> {{ .Segments.Git.Working.Untracked }}{{ end }}'
 
       - type: text
         style: powerline
@@ -133,7 +138,7 @@ blocks:
         foreground: p:git-modified
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Modified 0 }} {{ .Segments.Git.Working.Modified }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Modified 0 }}<d></d> {{ .Segments.Git.Working.Modified }}{{ end }}'
 
       - type: text
         style: powerline
@@ -141,7 +146,7 @@ blocks:
         foreground: p:git-deleted
         powerline_symbol: 
         templates:
-          - '{{ if gt .Segments.Git.Working.Deleted 0 }} {{ .Segments.Git.Working.Deleted }}{{ end }}'
+          - '{{ if gt .Segments.Git.Working.Deleted 0 }}<d></d> {{ .Segments.Git.Working.Deleted }}{{ end }}'
 
   - alignment: left
     type: prompt
@@ -152,7 +157,7 @@ blocks:
         foreground: p:white
         leading_diamond: ' '
         templates:
-          - '{{ if .Error }}{{ .Error }}{{ else }} {{ .Full }}{{ end }}'
+          - '{{ if .Error }}{{ .Error }}{{ else }}<d></d> {{ .Full }}{{ end }}'
           - '{{ if readFile "./bin/rails" }}{{ else }}<p:ruby,transparent></>{{ end }}'
 
       - type: text
@@ -161,7 +166,7 @@ blocks:
         foreground: p:black
         powerline_symbol: 
         templates:
-          - '{{ if readFile "./bin/rails" }} 󰫏 $(./bin/rails version | sed s/Rails\ //){{ end }}'
+          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> $(./bin/rails version | sed s/Rails\ //){{ end }}'
 
   - alignment: left
     type: prompt
