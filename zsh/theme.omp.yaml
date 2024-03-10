@@ -102,7 +102,7 @@ blocks:
           - '{{ if .Segments.Git.Working.Changed }}p:git-modified{{ end }}'
           - '{{ if .Segments.Git.Staging.Changed }}magenta{{ end }}'
         templates:
-          - '{{ if .Segments.Git.Commit.Sha }} <d> </d><b>{{ trunc 7 .Segments.Git.Commit.Sha }}</b>{{ end }}'
+          - '{{ if .Segments.Git.Commit.Sha }} <d> </d>{{ trunc 7 .Segments.Git.Commit.Sha }}{{ end }}'
 
       - type: text
         style: powerline
