@@ -159,21 +159,13 @@ blocks:
           - '{{ if .Error }}{{ .Error }}{{ else }}<d></d> {{ .Full }}{{ end }}'
           - '{{ if readFile "./bin/rails" }}{{ else }}<p:ruby,transparent></>{{ end }}'
 
-      - type: command
-        style: plain
-        properties:
-          shell: zsh
-          script: ./bin/rails version | sed s/Rails\ //
-        templates:
-          - ''
-
       - type: text
         style: powerline
         background: red
         foreground: p:black
         powerline_symbol: 
         templates:
-          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> {{ end }}'
+          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> $(./bin/rails version | sed s/Rails\ //){{ end }}'
 
   - alignment: left
     type: prompt
