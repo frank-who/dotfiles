@@ -31,6 +31,7 @@ alias gs='git status -sb'
 alias gst='git stash'
 alias gstp='git stash pop'
 alias grmerged='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|main|develop)\s*$)" | command xargs -n 1 git branch -d'
+alias gg='gaa && gcms'
 
 gcma()  { git commit -m "Add: $*"; }      # add
 gcmr()  { git commit -m "Remove: $*"; }   # remove
@@ -50,7 +51,6 @@ alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias rake='noglob rake'
 alias rce="EDITOR='code --wait' rails credentials:edit"
-alias stim-manifest='rails stimulus:manifest:update'
 alias rr='rails runner'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'
@@ -58,7 +58,7 @@ alias tlf='tail -f'
 alias tlfd='tail -f log/development.log'
 alias tlfp='tail -f log/production.log'
 alias tlft='tail -f log/test.log'
-alias fixsql='rails db:drop db:create db:migrate RAILS_ENV=test && ruby -pi -e "sub(/DEFAULT\ gen_random_uuid\(\)/, \"DEFAULT public.gen_random_uuid()\")" db/structure.sql'
+alias dev-restart='overmind restart web worker vite'
 
 # OSX
 alias flushdnscache='dscacheutil -flushcache'

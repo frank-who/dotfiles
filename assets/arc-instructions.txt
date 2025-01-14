@@ -1,0 +1,1 @@
+Open /Applications/Arc.app/Contents/Resources/ARCClients_BaseAssets.bundle/Contents/Resources/Assets.car with Samra, and replace the AppIconOriginal.

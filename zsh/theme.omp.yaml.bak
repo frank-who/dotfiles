@@ -1,8 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version: 3
-final_space: true
-shell_integration: true
+version: 2.0
 
 palette:
   black:         'black'
@@ -29,6 +26,9 @@ palette:
   git-deleted:   'p:red'
   git-modified:  'yellow'
   git-working:   'p:purple'
+
+final_space: true
+shell_integration: true
 
 transient_prompt:
   foreground: p:white
@@ -159,21 +159,13 @@ blocks:
           - '{{ if .Error }}{{ .Error }}{{ else }}<d></d> {{ .Full }}{{ end }}'
           - '{{ if readFile "./bin/rails" }}{{ else }}<p:ruby,transparent></>{{ end }}'
 
-      - type: command
-        style: plain
-        properties:
-          shell: zsh
-          script: ./bin/rails version | sed s/Rails\ //
-        templates:
-          - ''
-
       - type: text
         style: powerline
         background: red
         foreground: p:black
         powerline_symbol: 
         templates:
-          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> {{ end }}'
+          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> $(./bin/rails version | sed s/Rails\ //){{ end }}'
 
   - alignment: left
     type: prompt
