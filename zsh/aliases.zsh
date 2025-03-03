@@ -51,6 +51,8 @@ alias migrate='rake db:migrate db:test:clone'
 alias opencov='open coverage/index.html'
 alias rake='noglob rake'
 alias rce="EDITOR='code --wait' rails credentials:edit"
+alias rce-staging="X_APP_ENV=staging EDITOR='code --wait' rails credentials:edit"
+alias rce-production="X_APP_ENV=production EDITOR='code --wait' rails credentials:edit"
 alias rr='rails runner'
 alias rspec='rspec --color --format doc'
 alias rst='touch tmp/restart.txt'

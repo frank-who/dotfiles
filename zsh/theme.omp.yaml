@@ -157,15 +157,7 @@ blocks:
         leading_diamond: ' '
         templates:
           - '{{ if .Error }}{{ .Error }}{{ else }}<d></d> {{ .Full }}{{ end }}'
-          - '{{ if readFile "./bin/rails" }}{{ else }}<p:ruby,transparent></>{{ end }}'
-
-      - type: text
-        style: powerline
-        background: red
-        foreground: p:black
-        powerline_symbol: 
-        templates:
-          - '{{ if readFile "./bin/rails" }} <d>󰫏</d> $(./bin/rails version | sed s/Rails\ //){{ end }}'
+          - '<p:ruby,transparent></>'
 
   - alignment: left
     type: prompt
